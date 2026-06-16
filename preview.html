@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="src/index.css" />
+<title>ARMINSOL — static CSS preview</title>
+<style>
+  /* preview-only helpers that mirror the inline styles used in the React components */
+  .hdr { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 72%, transparent); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+  .hdr-in { display:flex; align-items:center; justify-content:space-between; height:80px; }
+  .logo { display:flex; align-items:center; gap:12px; font-weight:700; font-size:17px; text-transform:uppercase; }
+  .logo img { height:30px; }
+  .nlinks { display:flex; align-items:center; gap:30px; }
+  .nlink { color: var(--muted); font-size:16px; letter-spacing:-0.025em; }
+  .main { padding-top: 0; }
+  .hero-top { display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:90px; }
+  .cta-center { display:flex; justify-content:center; }
+  .about-grid { display:grid; grid-template-columns:1.15fr 0.85fr; gap:64px; align-items:center; }
+  .foot { border-top:1px solid var(--line); }
+  .foot-in { display:flex; align-items:center; justify-content:space-between; gap:32px; padding-top:40px; padding-bottom:40px; }
+</style>
+</head>
+<body>
+<header class="hdr"><div class="container hdr-in">
+  <div class="logo"><img src="https://framerusercontent.com/images/GBSIFN1OQOp4q8fgwlTZGwXPRPY.png" alt=""/><span>ARMINSOL Trading</span></div>
+  <div class="nlinks">
+    <a class="nlink" href="#">products</a><a class="nlink" href="#">about</a><a class="nlink" href="#">services</a><a class="nlink" href="#">contact</a>
+    <button class="pill pill--solid">☀ Light mode</button>
+    <span class="pill pill--ghost">🌐 EN</span>
+  </div>
+</div></header>
+
+<main class="main">
+  <!-- Hero -->
+  <section style="padding:90px 0 56px"><div class="container">
+    <div class="hero-top">
+      <span class="mono" style="font-size:14px;color:var(--muted)">Leading Partner In Mining Solutions</span>
+      <div class="mono" style="display:flex;gap:40px;font-size:14px;color:var(--muted)"><a href="#">info@arminsol.com.sa</a><a href="#">+966 56 977 3001</a></div>
+    </div>
+    <h1 class="display" style="max-width:1150px">Arab Mining Solutions Trading EST.</h1>
+    <a class="btn" style="margin-top:48px;min-width:320px" href="#">Browse Products <span>↗</span></a>
+  </div></section>
+
+  <!-- Product categories -->
+  <section style="padding-bottom:60px"><div class="container"><div class="pcards">
+    <a class="pcard" href="#"><div class="pcard__head"><span>2026</span><span>Product Category</span></div><div class="pcard__title">Blast Hole Drilling</div><img class="pcard__media" src="https://framerusercontent.com/images/vlnLzekFamjd2yiTHUYWCj90aA.png"/></a>
+    <a class="pcard" href="#"><div class="pcard__head"><span>2026</span><span>Product Category</span></div><div class="pcard__title">Diamond Core Drilling</div><img class="pcard__media" src="https://framerusercontent.com/images/x1zh9hyHPtdJOX0HHHvuA2kdOfc.png"/></a>
+    <a class="pcard" href="#"><div class="pcard__head"><span>2026</span><span>Product Category</span></div><div class="pcard__title">Saftey Items</div><img class="pcard__media" src="https://framerusercontent.com/images/6CZde9nwY6EyNbMKJ93Gxi8tKA.png"/></a>
+    <a class="pcard" href="#"><div class="pcard__head"><span>2026</span><span>Product Category</span></div><div class="pcard__title">Spare Parts</div><img class="pcard__media" src="https://framerusercontent.com/images/r9UZLHdymrfghrsStLz4j9VMXM.png"/></a>
+    <a class="pcard" href="#"><div class="pcard__head"><span>2026</span><span>Product Category</span></div><div class="pcard__title">OTR Tire</div><img class="pcard__media" src="https://framerusercontent.com/images/2cFssqV4CVSbhWNwdIE7Lh5N8.png"/></a>
+  </div></div></section>
+
+  <!-- Brands -->
+  <section class="section"><div class="container">
+    <span class="eyebrow" style="margin-bottom:36px;display:inline-block">brands we carry</span>
+    <div class="brands">
+      <div class="brand"><img src="https://framerusercontent.com/images/NpznnLa9gWZEywFxT2dgRZGRMw.png"/></div>
+      <div class="brand"><img src="https://framerusercontent.com/images/YPIca3bwA9HIXasyOSz5Z0Z1s.png"/></div>
+      <div class="brand"><img src="https://framerusercontent.com/images/uRudE9VDVxafLkcb7hc0H3EiAKc.png"/></div>
+      <div class="brand"><img src="https://framerusercontent.com/images/f5jmwdvkkg42wCUCh7nZlVz2k.png"/></div>
+      <div class="brand"><img src="https://framerusercontent.com/images/1lcN9rtlGJfm9u4hqLGCQFupF0c.png"/></div>
+      <div class="brand"><img src="https://framerusercontent.com/images/vtkvA8FSrJScNBhGOsVIJinbXck.png"/></div>
+      <div class="brand"><img src="https://framerusercontent.com/images/madyZmSxJDW6g5MSSvrgzueuBjw.png"/></div>
+      <div class="brand"><img src="https://framerusercontent.com/images/XLOrYjbJ6BcIHi3COX6rexR1m5o.png"/></div>
+      <div class="brand"><img src="https://framerusercontent.com/images/vPj1CzKD65m521pKqRwAoqkGAwQ.png"/></div>
+    </div>
+  </div></section>
+
+  <!-- About -->
+  <section class="section"><div class="container about-grid">
+    <div>
+      <span class="eyebrow">about</span>
+      <h3 class="h-lede" style="margin-top:28px;max-width:640px">ARMINSOL Est. is a leading partner in providing companies in Saudi Arabia, Egypt and other GCC countries with solutions like tires, parts, tools and technical support.</h3>
+      <a class="btn" style="margin-top:36px;min-width:300px" href="#">Get In Touch <span>↗</span></a>
+    </div>
+    <img src="https://framerusercontent.com/images/RlLwH3R7MGaysWyXzyNtASQwg.png" style="width:100%;border-radius:8px;aspect-ratio:374/498;object-fit:cover"/>
+  </div></section>
+
+  <!-- Services -->
+  <section class="section"><div class="container">
+    <span class="eyebrow" style="margin-bottom:24px;display:inline-block">services</span>
+    <a class="srow" href="#"><div class="srow__title">Tire Management</div><div class="srow__date">Apr 8, 2022</div><img class="srow__thumb" src="https://framerusercontent.com/images/klkGqehQSUr9N4OTaEBiG89xcLU.png"/><span class="srow__arrow">↗</span></a>
+    <a class="srow" href="#"><div class="srow__title">Operational Consultancy</div><div class="srow__date">Mar 15, 2022</div><img class="srow__thumb" src="https://framerusercontent.com/images/Q9J5HZMI2kQVNIFWFypHvgOyFtY.png"/><span class="srow__arrow">↗</span></a>
+    <a class="srow" href="#"><div class="srow__title">Stemming Caps</div><div class="srow__date">Feb 28, 2022</div><img class="srow__thumb" src="https://framerusercontent.com/images/66QNAFzh5QCl7uwcH6BVYIs6Ilw.png"/><span class="srow__arrow">↗</span></a>
+    <div class="cta-center" style="margin-top:56px"><a class="btn btn--center" style="min-width:340px" href="#">Get In Touch <span>↗</span></a></div>
+  </div></section>
+
+  <!-- CTA -->
+  <section class="section"><div class="container">
+    <span class="eyebrow">start the conversation</span>
+    <h2 class="h-cta" style="max-width:1050px;margin-top:28px">We are open to new service partners, feel free to email us to see how can we provide for you.</h2>
+    <div class="cta-center" style="margin-top:48px"><a class="btn btn--center" style="min-width:340px" href="#">Get In Touch <span>↗</span></a></div>
+  </div></section>
+</main>
+
+<footer class="foot"><div class="container foot-in">
+  <div class="logo" style="text-transform:none"><img src="https://framerusercontent.com/images/GBSIFN1OQOp4q8fgwlTZGwXPRPY.png" alt=""/><span style="color:var(--muted);font-weight:600">ARMINSOL Trading</span></div>
+  <nav style="display:flex;gap:36px"><a class="nlink" href="#">products</a><a class="nlink" href="#">about</a><a class="nlink" href="#">services</a><a class="nlink" href="#">contact</a></nav>
+  <div style="display:flex;gap:20px;color:var(--muted)">▶ ✦ ◎</div>
+</div></footer>
+</body>
+</html>
