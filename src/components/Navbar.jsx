@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
+import { AnimatePresence, motion, useMotionValue, useSpring } from 'framer-motion'
 import { useI18n } from '../i18n'
 import { useTheme } from '../ThemeContext'
 import { Sun, Moon, Globe } from './icons'
@@ -23,15 +23,23 @@ export default function Navbar() {
   const location = useLocation()
   const { theme, toggle } = useTheme()
   const { c, toggleLang } = useI18n()
-  const { scrollYProgress } = useScroll()
-  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 30, restDelta: 0.001 })
+  const rawProgress = useMotionValue(0)
+  const progress = useSpring(rawProgress, { stiffness: 220, damping: 40, restDelta: 0.0005 })
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24)
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      rawProgress.set(max > 0 ? Math.min(1, window.scrollY / max) : 0)
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [rawProgress])
   useEffect(() => { setOpen(false) }, [location.pathname])
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''

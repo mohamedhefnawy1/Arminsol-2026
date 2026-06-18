@@ -22,9 +22,11 @@ export default function Services() {
                 <motion.article className="card" whileHover={{ y: -6 }}>
                   <img src={s.image} alt={s.title} className="media" style={{ borderRadius: 0 }} loading="lazy" />
                   <div style={{ padding: '22px 22px 26px' }}>
-                    <p className="eyebrow" style={{ margin: 0 }}>{c.label.latestPost}</p>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: 'var(--font-mono)', fontWeight: 300, fontSize: 13, color: 'var(--muted)' }}>
+                      <span className="live-dot" />{c.label.consultation}
+                    </span>
                     <h3 style={{ fontSize: '1.5rem', margin: '12px 0 6px', fontWeight: 500 }}>{s.title}</h3>
-                    <p className="row__meta">{s.date}</p>
+                    <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--faint)', margin: 0 }}>{c.label.clickToLearn}</p>
                   </div>
                 </motion.article>
               </Link>

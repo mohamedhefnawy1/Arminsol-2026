@@ -14,7 +14,7 @@ export default function Footer() {
           <span style={{ fontWeight: 600, fontSize: 17, color: 'var(--muted)' }}>ARMINSOL Trading</span>
         </Link>
 
-        <nav style={{ display: 'flex', gap: 36 }}>
+        <nav className="footer-nav" style={{ display: 'flex', gap: 36 }}>
           {c.nav.map((item) => (
             <Link key={item.to} to={item.to} style={{ color: 'var(--muted)', fontSize: 16 }}>{item.label}</Link>
           ))}
@@ -34,7 +34,8 @@ export default function Footer() {
       <style>{`
         .social:hover { color: var(--text) !important; }
         @media (max-width: 760px) {
-          .footer-row { flex-direction: column; align-items: flex-start !important; gap: 24px; }
+          .footer-row { flex-direction: column; align-items: flex-start !important; gap: 28px; }
+          .footer-nav { flex-direction: column; gap: 14px; }
         }
       `}</style>
     </footer>
