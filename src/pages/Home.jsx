@@ -14,7 +14,7 @@ export default function Home() {
           <Reveal>
             <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, marginBottom: 96 }}>
               <span className="mono" style={{ fontSize: 14, color: 'var(--muted)' }}>{c.tagline}</span>
-              <div className="mono" style={{ display: 'flex', gap: 40, fontSize: 14, color: 'var(--muted)' }}>
+              <div className="mono hero-contact" style={{ display: 'flex', gap: 40, fontSize: 14, color: 'var(--muted)' }}>
                 <a href={`mailto:${c.email}`} style={{ direction: 'ltr' }}>{c.email}</a>
                 <a href={`tel:${c.phone.replace(/\s/g, '')}`} style={{ direction: 'ltr' }}>{c.phone}</a>
               </div>

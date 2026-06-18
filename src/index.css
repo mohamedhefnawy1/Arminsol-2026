@@ -469,6 +469,7 @@ main, footer { position: relative; z-index: 1; }
   .srow__thumb { display: none; }
   .gridlines__inner { grid-template-columns: repeat(4, 1fr); }
   .btn { width: 100%; min-width: 0; }
+  .hero-contact { display: none !important; }
 }
 
 /* ---- RTL (Arabic) ---- */

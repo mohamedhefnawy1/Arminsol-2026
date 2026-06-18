@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import { useI18n } from '../i18n'
@@ -32,6 +33,10 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
   useEffect(() => { setOpen(false) }, [location.pathname])
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
 
   return (
     <motion.header
@@ -70,11 +75,11 @@ export default function Navbar() {
 
         <button
           className="nav-burger"
-          aria-label="Toggle menu"
-          onClick={() => setOpen((v) => !v)}
-          style={{ display: 'none', background: 'transparent', border: '1px solid var(--pill-border)', borderRadius: 8, color: 'var(--text)', width: 42, height: 42, cursor: 'pointer' }}
+          aria-label="Open menu"
+          onClick={() => setOpen(true)}
+          style={{ display: 'none', alignItems: 'center', justifyContent: 'center', background: 'transparent', border: 0, color: 'var(--text)', width: 44, height: 44, cursor: 'pointer' }}
         >
-          {open ? '✕' : '☰'}
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><path d="M3 8h18M3 16h18" /></svg>
         </button>
       </nav>
 
@@ -85,35 +90,59 @@ export default function Navbar() {
         </div>
       </div>
 
+      {createPortal(
       <AnimatePresence>
         {open && (
-          <motion.div className="mobile-menu"
-            initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            style={{ overflow: 'hidden', borderTop: '1px solid var(--line)', background: 'var(--bg)' }}
+          <motion.div
+            className="mobile-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            style={{ position: 'fixed', inset: 0, zIndex: 60, background: 'color-mix(in srgb, var(--bg) 62%, transparent)', backdropFilter: 'blur(26px) saturate(1.3)', WebkitBackdropFilter: 'blur(26px) saturate(1.3)', display: 'flex', flexDirection: 'column' }}
           >
-            <div className="container" style={{ display: 'flex', flexDirection: 'column', padding: '12px 0 24px' }}>
-              {c.nav.map((item) => (
-                <NavLink key={item.to} to={item.to} style={{ padding: '14px 0', borderBottom: '1px solid var(--line)', fontSize: 22, fontWeight: 500 }}>{item.label}</NavLink>
+            <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 80, flex: '0 0 auto' }}>
+              <Logo flame={c.flame} />
+              <button onClick={() => setOpen(false)} aria-label="Close menu" style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'none', border: 0, color: 'var(--text)', fontSize: 18, cursor: 'pointer' }}>
+                close
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" /></svg>
+              </button>
+            </div>
+
+            <nav className="container" style={{ flex: '1 1 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 4 }}>
+              {c.nav.map((item, i) => (
+                <motion.div key={item.to}
+                  initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.06 + i * 0.05, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <NavLink to={item.to} className="mobile-link"
+                    style={({ isActive }) => ({ display: 'inline-block', padding: '8px 0', fontSize: 'clamp(2.6rem, 12vw, 3.6rem)', fontWeight: 500, letterSpacing: '-0.03em', color: isActive ? 'var(--text)' : 'var(--muted)' })}
+                  >
+                    {item.label}
+                  </NavLink>
+                </motion.div>
               ))}
-              <div style={{ display: 'flex', gap: 12, marginTop: 18 }}>
-                <button className="pill pill--solid" onClick={toggle}>
-                  {theme === 'dark' ? <Sun /> : <Moon />} {theme === 'dark' ? 'Light mode' : 'Dark mode'}
-                </button>
-                <button className="pill pill--ghost" onClick={toggleLang}><Globe /> {c.langName}</button>
-              </div>
+            </nav>
+
+            <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flex: '0 0 auto', paddingTop: 16, paddingBottom: 44 }}>
+              <button className="pill pill--ghost" onClick={toggle}>
+                {theme === 'dark' ? <Sun /> : <Moon />} {theme === 'dark' ? 'Light mode' : 'Dark mode'}
+              </button>
+              <button className="pill pill--ghost" onClick={toggleLang}><Globe /> {c.langName}</button>
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body)}
 
       <style>{`
         @media (max-width: 860px) {
           .nav-links { display: none !important; }
-          .nav-burger { display: inline-flex !important; align-items: center; justify-content: center; }
+          .nav-burger { display: inline-flex !important; }
         }
-        @media (min-width: 861px) { .mobile-menu { display: none !important; } }
+        @media (min-width: 861px) { .mobile-overlay { display: none !important; } }
         .nav-link:hover { color: var(--text) !important; }
+        .mobile-link:hover { color: var(--text) !important; }
       `}</style>
     </motion.header>
   )
