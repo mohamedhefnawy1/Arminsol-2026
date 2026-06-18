@@ -34,7 +34,7 @@ export default function Contact() {
         </Reveal>
         <Reveal delay={0.1}>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 28, border: '1px solid var(--line-strong)', borderRadius: 999, padding: '8px 16px', fontFamily: 'var(--font-mono)', fontSize: 13 }}>
-            <span style={{ width: 7, height: 7, borderRadius: 999, background: 'var(--c-phosphates)' }} />
+            <span className="live-dot" />
             {c.contact.sourcing}
           </span>
         </Reveal>
@@ -59,7 +59,7 @@ export default function Contact() {
                 <input style={field} type="email" placeholder={f.email} required />
                 <input style={field} placeholder={f.company} />
                 <textarea style={{ ...field, minHeight: 160, resize: 'vertical' }} placeholder={f.message} required />
-                <button type="submit" className="btn btn--solid btn--center">{f.send} <Arrow /></button>
+                <button type="submit" className="btn">{f.send} <Arrow /></button>
               </form>
             )}
           </Reveal>

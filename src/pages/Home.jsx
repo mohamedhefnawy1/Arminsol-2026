@@ -43,7 +43,7 @@ export default function Home() {
                   <div className="pcard__title">{p.title}</div>
                   <img className="pcard__media" src={p.image} alt={p.title} loading="lazy" />
                   <div className="pcard__head" style={{ marginTop: 16, marginBottom: 0 }}>
-                    <span>{c.year}</span><span>{c.productCategory}</span>
+                    <span className="pcard__status"><span className="pcard__status-dot" aria-hidden="true"></span>in stock</span>
                   </div>
                 </Link>
               </Reveal>
@@ -55,7 +55,7 @@ export default function Home() {
       {/* ---- Brands we carry ---- */}
       <section className="section">
         <div className="container">
-          <Reveal><span className="eyebrow" style={{ marginBottom: 36, display: 'inline-block' }}>{c.label.brands}</span></Reveal>
+          <Reveal><span className="eyebrow" style={{ marginBottom: 36 }}>{c.label.brands}</span></Reveal>
           <Reveal delay={0.05}>
             <div className="brands">
               {c.brandLogos.map((src, i) => (

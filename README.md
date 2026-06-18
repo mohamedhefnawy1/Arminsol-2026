@@ -1,7 +1,8 @@
 # ARMINSOL Trading — React app
 
 A React + Vite recreation of the Framer site at
-`https://methodical-consistency-401478.framer.app/` (**Arab Mining Solutions Trading EST.**).
+`https://methodical-consistency-401478.framer.app/` (the "Nitro" portfolio
+template, customized for **Arab Mining Solutions Trading EST.**).
 
 Five pages with client-side routing: **Home, Products, About, Services, Contact**.
 
@@ -9,7 +10,7 @@ Five pages with client-side routing: **Home, Products, About, Services, Contact*
 
 ```bash
 npm install
-npm run dev      # http://localhost:5234
+npm run dev      # http://localhost:5173
 npm run build    # production build into /dist
 npm run preview  # preview the production build
 ```

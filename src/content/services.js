@@ -4,28 +4,28 @@
 
 const IMG = 'https://framerusercontent.com/images/'
 
-/* ----------------------------- Tyre Management ---------------------------- */
-const tyre = {
+/* ----------------------------- Tire Management ---------------------------- */
+const tire = {
   en: {
-    back: 'services', eyebrow: 'tyre management', title: 'Tyre Management',
+    back: 'services', eyebrow: 'tire management', title: 'Tire Management',
     heroImage: IMG + 'yUIR6H1xxwg9sTqEXsireDEfq8.png',
-    intro: 'Tyres are one of the largest operating costs in mining. ARMINSOL helps you get more from every tyre — across OTR and TBR fleets — through expert care, data-driven monitoring, and proactive maintenance that extends life, lifts availability, and lowers cost per hour.',
+    intro: 'Tires are one of the largest operating costs in mining. ARMINSOL helps you get more from every tire — across OTR and TBR fleets — through expert care, data-driven monitoring, and proactive maintenance that extends life, lifts availability, and lowers cost per hour.',
     manageLabel: 'what we manage',
-    manage: ['Inspections & condition assessments', 'Pressure monitoring & optimization', 'Tread wear analysis & tracking', 'Damage & failure analysis', 'Performance reporting', 'Inventory & lifecycle planning', 'Mounting & demounting', 'On-site tyre support'],
+    manage: ['Inspections & condition assessments', 'Pressure monitoring & optimization', 'Tread wear analysis & tracking', 'Damage & failure analysis', 'Performance reporting', 'Inventory & lifecycle planning', 'Mounting & demounting', 'On-site tire support'],
     duoLabel: 'where we work',
     duo: [
-      { title: 'OTR — Heavy Equipment', text: 'Maximizing the performance and lifespan of tyres on the most demanding mining equipment.', items: ['Haul trucks', 'Wheel loaders', 'Dump trucks', 'Graders', 'Dozers', 'Excavators'] },
+      { title: 'OTR — Heavy Equipment', text: 'Maximizing the performance and lifespan of tires on the most demanding mining equipment.', items: ['Haul trucks', 'Wheel loaders', 'Dump trucks', 'Graders', 'Dozers', 'Excavators'] },
       { title: 'TBR — Transport & Support', text: 'Reliable performance across transport, logistics, and support fleets while reducing cost.', items: ['Transport trucks', 'Water tankers', 'Fuel trucks', 'Service vehicles', 'Logistics fleets'] },
     ],
     howLabel: 'how we work',
     capabilities: [
       { k: '01', title: 'Data-driven monitoring', text: 'We track pressure, temperature, wear and cost-per-kilometre to catch issues before they become failures.' },
       { k: '02', title: 'On-site support', text: 'Field teams handle routine inspections, emergencies and maintenance to keep your operation moving.' },
-      { k: '03', title: 'Safety first', text: 'Strict handling, inflation and early hazard-detection standards reduce tyre-related risk.' },
+      { k: '03', title: 'Safety first', text: 'Strict handling, inflation and early hazard-detection standards reduce tire-related risk.' },
     ],
     whyLabel: 'why arminsol',
     why: ['OTR and TBR expertise', 'Dedicated field teams', 'Proactive maintenance', 'Data-driven decisions', 'Safety and compliance', 'Lower cost of ownership'],
-    cta: { eyebrow: "let's talk", heading: "Let's optimize your tyre performance.", text: "Tell us about your fleet and we'll build a tyre management program around it.", button: 'Contact Us' },
+    cta: { eyebrow: "let's talk", heading: "Let's optimize your tire performance.", text: "Tell us about your fleet and we'll build a tire management program around it.", button: 'Contact Us' },
   },
   ar: {
     back: 'الخدمات', eyebrow: 'إدارة الإطارات', title: 'إدارة الإطارات',
@@ -143,7 +143,7 @@ const stemming = {
 }
 
 const services = {
-  'tyre-management': tyre,
+  'tire-management': tire,
   'operational-consultancy': operational,
   'stemming-caps': stemming,
 }

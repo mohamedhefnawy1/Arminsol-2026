@@ -2,4 +2,4 @@
 // Re-exported here only to avoid breaking any lingering imports.
 import services from './services'
 
-export default services['tyre-management']
+export default services['tire-management']

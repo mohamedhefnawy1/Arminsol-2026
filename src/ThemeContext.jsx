@@ -1,11 +1,11 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 
-const ThemeContext = createContext({ theme: 'light', toggle: () => {} })
+const ThemeContext = createContext({ theme: 'dark', toggle: () => {} })
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    if (typeof window === 'undefined') return 'light'
-    return localStorage.getItem('arminsol-theme') || 'light'
+    if (typeof window === 'undefined') return 'dark'
+    return localStorage.getItem('arminsol-theme') || 'dark'
   })
 
   useEffect(() => {

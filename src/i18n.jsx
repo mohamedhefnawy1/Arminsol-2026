@@ -53,7 +53,7 @@ const assets = {
     IMG + 'OAdH3nRfiGWHDAbW8b0pOE6XOTo.png',
     IMG + 'SwxdeDTCFIgIDbc9gn2W8aSwN5E.png',
   ],
-  logoSwatch: ['var(--c-gold)', 'var(--c-copper)', 'var(--c-lime)', 'var(--c-bauxite)', 'var(--c-silver)', 'var(--c-phosphates)'],
+  logoSwatch: ['var(--c-gold)', 'var(--c-copper)', 'var(--c-bauxite)', 'var(--c-silver)', 'var(--c-phosphates)'],
 }
 
 // ---- localized strings ----
@@ -81,7 +81,7 @@ const S = {
     homeServiceTitles: ['Tire Management', 'Operational Consultancy', 'Stemming Caps'],
     homeServiceDates: ['Apr 8, 2022', 'Mar 15, 2022', 'Feb 28, 2022'],
     productsTitle: 'Products',
-    productListTitles: ['OTR Tire', 'TBR TIre', 'Spare Parts', 'Safety Items', 'Blast Hole Drilling', 'Diamond Core Drilling', 'Core Tray - Chip Box', 'Stemming Caps'],
+    productListTitles: ['OTR Tire', 'TBR Tire', 'Spare Parts', 'Safety Items', 'Blast Hole Drilling', 'Diamond Core Drilling', 'Core Tray - Chip Box', 'Stemming Caps'],
     productListDate: 'Apr 8, 2022',
     aboutTitle: 'About Us',
     stats: [
@@ -96,7 +96,7 @@ const S = {
       { period: '2021 — 2026', client: 'ABC Corporation', location: 'Saudi Arabia', detail: 'Collaborated with cross-functional teams to design and develop innovative products.' },
     ],
     logoHeading: 'The colours of our logo represent the broad spectrum of our markets',
-    logoColorNames: ['Gold', 'Copper', 'Lime', 'Bauxite', 'Silver', 'Phosphates'],
+    logoColorNames: ['Gold', 'Copper', 'Bauxite', 'Silver', 'Phosphates'],
     servicesTitle: 'Services',
     serviceTitles: ['Tire Management', 'Operational Consultancy', 'Stemming Caps'],
     serviceDates: ['Mar 15, 2022', 'Mar 15, 2022', 'Mar 15, 2022'],
@@ -160,7 +160,7 @@ const S = {
       { period: '2021 — 2026', client: 'ABC Corporation', location: 'المملكة العربية السعودية', detail: 'تعاونّا مع فرقٍ متعدّدة التخصّصات لتصميم وتطوير منتجات مبتكرة.' },
     ],
     logoHeading: 'تمثّل ألوان شعارنا الطيف الواسع لأسواقنا',
-    logoColorNames: ['ذهب', 'نحاس', 'جير', 'بوكسيت', 'فضّة', 'فوسفات'],
+    logoColorNames: ['ذهب', 'نحاس', 'بوكسيت', 'فضّة', 'فوسفات'],
     servicesTitle: 'الخدمات',
     serviceTitles: ['إدارة الإطارات', 'الاستشارات التشغيلية', 'سدّادات التفجير'],
     serviceDates: ['15 مارس 2022', '15 مارس 2022', '15 مارس 2022'],
@@ -208,7 +208,7 @@ function build(lang) {
     aboutText: s.aboutText,
     nav: s.navLabels.map((label, i) => ({ label, to: ['/products', '/about', '/services', '/contact'][i] })),
     productCategories: s.productTitles.map((title, i) => ({ title, image: assets.productImages[i] })),
-    homeServices: s.homeServiceTitles.map((title, i) => ({ title, date: s.homeServiceDates[i], image: assets.homeServiceImages[i], to: ['/services/tyre-management', '/services/operational-consultancy', '/services/stemming-caps'][i] })),
+    homeServices: s.homeServiceTitles.map((title, i) => ({ title, date: s.homeServiceDates[i], image: assets.homeServiceImages[i], to: ['/services/tire-management', '/services/operational-consultancy', '/services/stemming-caps'][i] })),
     products: s.productListTitles.map((title, i) => ({ title, date: s.productListDate, image: assets.productPageImages[i] })),
     productsTitle: s.productsTitle,
     aboutTitle: s.aboutTitle,
@@ -218,7 +218,7 @@ function build(lang) {
     logoHeading: s.logoHeading,
     logoColors: s.logoColorNames.map((name, i) => ({ name, color: assets.logoSwatch[i] })),
     servicesTitle: s.servicesTitle,
-    services: s.serviceTitles.map((title, i) => ({ title, date: s.serviceDates[i], image: assets.serviceImages[i], to: ['/services/tyre-management', '/services/operational-consultancy', '/services/stemming-caps'][i] })),
+    services: s.serviceTitles.map((title, i) => ({ title, date: s.serviceDates[i], image: assets.serviceImages[i], to: ['/services/tire-management', '/services/operational-consultancy', '/services/stemming-caps'][i] })),
     contact: s.contact,
     copyright: s.copyright,
   }
