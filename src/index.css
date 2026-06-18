@@ -232,7 +232,15 @@ h1, h2, h3, h4 {
   flex: 0 0 auto;
   background: #2ecc71;
   display: inline-block;
-  animation: live-blink 1.3s ease-in-out infinite;
+}
+/* solid green status dot (services cards) — no pulse */
+.dot-solid {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  background: #2ecc71;
+  display: inline-block;
 }
 .pcard__title {
   font-size: clamp(1.1rem, 1.6vw, 1.5rem);
@@ -358,7 +366,7 @@ h1, h2, h3, h4 {
 
 /* services list */
 .flist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 64px; margin: 0; padding: 0; list-style: none; }
-.flist__item { padding: 18px 2px; border-top: 1px solid var(--line); color: var(--text); font-size: 1.05rem; }
+.flist__item { padding: 12px 2px; color: var(--text); font-size: 1.05rem; }
 
 /* OTR / TBR two-up */
 .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
@@ -375,7 +383,7 @@ h1, h2, h3, h4 {
 
 /* why checklist */
 .clist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 64px; margin: 0; }
-.clist__item { display: flex; gap: 14px; align-items: center; color: var(--text); font-size: 1.05rem; padding: 18px 0; border-top: 1px solid var(--line); }
+.clist__item { display: flex; gap: 14px; align-items: center; color: var(--text); font-size: 1.05rem; padding: 12px 0; }
 .clist__check { color: var(--text); flex: 0 0 auto; }
 
 @media (max-width: 860px) {

@@ -32,7 +32,10 @@ export default function ServiceDetail() {
           </Reveal>
           <Reveal delay={0.05}><h1 className="svc-hero-title">{t.title}</h1></Reveal>
           <Reveal delay={0.1}><p className="prose" style={{ marginTop: 32 }}>{t.intro}</p></Reveal>
-          <Reveal delay={0.15}>
+          <Reveal delay={0.14}>
+            <Link to="/contact" className="btn" style={{ marginTop: 32 }}>{t.cta.button} <Arrow /></Link>
+          </Reveal>
+          <Reveal delay={0.18}>
             <img src={t.heroImage} alt={t.title} className="card" style={{ width: '100%', marginTop: 48, aspectRatio: '16 / 6', objectFit: 'cover' }} loading="lazy" />
           </Reveal>
         </div>
