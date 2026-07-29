@@ -47,3 +47,47 @@ export function Instagram({ size = 18 }) {
     </svg>
   )
 }
+// ---- "why choose Arminsol" benefit icons ----
+export function PriceTag({ size = 32 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" {...base} aria-hidden="true">
+      <path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0l-6.4-6.4a2 2 0 0 1-.6-1.4V4.8A1.8 1.8 0 0 1 5 3h7a2 2 0 0 1 1.4.6l7.2 7.2a2 2 0 0 1 0 2.6z" />
+      <circle cx="8.2" cy="8.2" r="1.4" />
+    </svg>
+  )
+}
+export function Truck({ size = 32 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" {...base} aria-hidden="true">
+      <path d="M1.5 5.5h12v10h-12z" />
+      <path d="M13.5 8.5h3.6L21 12v3.5h-7.5z" />
+      <circle cx="5.5" cy="17.5" r="1.9" />
+      <circle cx="17" cy="17.5" r="1.9" />
+    </svg>
+  )
+}
+export function Headset({ size = 32 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" {...base} aria-hidden="true">
+      <path d="M4 13a8 8 0 0 1 16 0" />
+      <rect x="3" y="13" width="4" height="6" rx="1.5" />
+      <rect x="17" y="13" width="4" height="6" rx="1.5" />
+      <path d="M20 19a3 3 0 0 1-3 3h-3" />
+    </svg>
+  )
+}
+export function Heart({ size = 32 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" {...base} aria-hidden="true">
+      <path d="M12 20.5C5 16 3.5 11.6 3.5 8.8A3.8 3.8 0 0 1 12 7.2a3.8 3.8 0 0 1 8.5 1.6c0 2.8-1.5 7.2-8.5 11.7z" />
+    </svg>
+  )
+}
+
+export function LinkedIn({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
+    </svg>
+  )
+}

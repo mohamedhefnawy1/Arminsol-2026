@@ -1,14 +1,14 @@
 import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import WhatsApp from './components/WhatsApp'
 import GridLines from './components/GridLines'
 import Home from './pages/Home'
 import Products from './pages/Products'
 import About from './pages/About'
 import Services from './pages/Services'
-import ServiceDetail from './pages/ServiceDetail'
 import Contact from './pages/Contact'
 
 function ScrollToTop() {
@@ -18,6 +18,8 @@ function ScrollToTop() {
 }
 
 function Page({ children }) {
+  const reduce = useReducedMotion()
+  if (reduce) return <main style={{ paddingTop: 80 }}>{children}</main>
   return (
     <motion.main
       initial={{ opacity: 0, y: 14 }}
@@ -44,12 +46,12 @@ export default function App() {
           <Route path="/products" element={<Page><Products /></Page>} />
           <Route path="/about" element={<Page><About /></Page>} />
           <Route path="/services" element={<Page><Services /></Page>} />
-          <Route path="/services/:slug" element={<Page><ServiceDetail /></Page>} />
           <Route path="/contact" element={<Page><Contact /></Page>} />
           <Route path="*" element={<Page><Home /></Page>} />
         </Routes>
       </AnimatePresence>
       <Footer />
+      <WhatsApp />
     </>
   )
 }

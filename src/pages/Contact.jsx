@@ -57,7 +57,10 @@ export default function Contact() {
                   <input style={field} placeholder={f.last} required />
                 </div>
                 <input style={field} type="email" placeholder={f.email} required />
-                <input style={field} placeholder={f.company} />
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                  <input style={field} placeholder={f.company} />
+                  <input style={field} type="tel" placeholder={f.phone} />
+                </div>
                 <textarea style={{ ...field, minHeight: 160, resize: 'vertical' }} placeholder={f.message} required />
                 <button type="submit" className="btn">{f.send} <Arrow /></button>
               </form>
@@ -68,15 +71,15 @@ export default function Contact() {
           <Reveal delay={0.1}>
             <div>
               {c.contact.channels.map((ch) => (
-                <div key={ch.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '18px 0', borderTop: '1px solid var(--line)' }}>
-                  <span style={{ color: 'var(--muted)' }}>{ch.label}</span>
-                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: 14 }}>{ch.handle}</span>
+                <div key={ch.label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 20, padding: '18px 0', borderTop: '1px solid var(--line)' }}>
+                  <span style={{ color: 'var(--muted)', flex: '0 0 auto' }}>{ch.label}</span>
+                  {ch.href ? (
+                    <a href={ch.href} target={ch.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" className="contact-link" style={{ fontFamily: 'var(--font-mono)', fontSize: 14, textAlign: 'end', direction: 'ltr' }}>{ch.value}</a>
+                  ) : (
+                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--muted)', textAlign: 'end', maxWidth: 260, lineHeight: 1.55 }}>{ch.value}</span>
+                  )}
                 </div>
               ))}
-              <div style={{ marginTop: 28, fontFamily: 'var(--font-mono)', fontSize: 14, color: 'var(--muted)' }}>
-                <a href={`mailto:${c.email}`} style={{ display: 'block', direction: 'ltr' }}>{c.email}</a>
-                <a href={`tel:${c.phone.replace(/\s/g, '')}`} style={{ display: 'block', marginTop: 6, direction: 'ltr' }}>{c.phone}</a>
-              </div>
             </div>
           </Reveal>
         </div>

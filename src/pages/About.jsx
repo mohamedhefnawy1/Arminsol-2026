@@ -1,74 +1,66 @@
-import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
-import Arrow from '../components/Arrow'
-import CTA from '../components/CTA'
-import { useI18n } from '../i18n'
+import { useI18n, Highlight } from '../i18n'
 
 export default function About() {
   const { c } = useI18n()
+  const a = c.about
   return (
     <>
-      <section style={{ padding: '80px 0 48px' }}>
+      {/* Page hero */}
+      <section style={{ padding: '80px 0 40px' }}>
         <div className="container">
-          <Reveal><h1 className="display">{c.aboutTitle}</h1></Reveal>
-
-          <div className="grid grid-3" style={{ marginTop: 56 }}>
-            {c.aboutStats.map((s, i) => (
-              <Reveal key={s.label} delay={i * 0.06}>
-                <div>
-                  <p className="stat__label">{s.label}</p>
-                  <div className="stat__num">{s.value}</div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal><h1 className="display">{a.title}</h1></Reveal>
         </div>
       </section>
 
-      {/* Company details — image beside the text (as on the live site) */}
-      <section className="section">
-        <div className="container split" style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: 64, alignItems: 'center' }}>
-          <Reveal>
-            <img src={c.aboutBanner} alt="ARMINSOL team" className="card" style={{ width: '100%', aspectRatio: '712 / 448', objectFit: 'cover' }} loading="lazy" />
-          </Reveal>
+      {/* Who We Are — text beside image */}
+      <section className="section" style={{ paddingTop: 40 }}>
+        <div className="container split" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 64, alignItems: 'center' }}>
           <div>
-            <Reveal><span className="eyebrow">{c.label.companyDetails}</span></Reveal>
-            <Reveal delay={0.05}><h2 className="h-lede" style={{ marginTop: 20 }}>{c.aboutDetails}</h2></Reveal>
+            <Reveal><span className="eyebrow">{a.whoLabel}</span></Reveal>
+            <Reveal delay={0.05}><p className="statement" style={{ marginTop: 26 }}>{a.whoLede}</p></Reveal>
             <Reveal delay={0.1}>
-              <Link to="/contact" className="btn" style={{ marginTop: 28 }}>
-                {c.viewCompanyProfile} <Arrow />
-              </Link>
+              <p className="body" style={{ marginTop: 26 }}>
+                <Highlight text={a.whoSince} mark={a.sinceMark} />
+              </p>
+            </Reveal>
+            <Reveal delay={0.14}>
+              <p className="body" style={{ marginTop: '1.1em' }}>{a.who2a} {a.who2b}</p>
             </Reveal>
           </div>
+          <Reveal delay={0.1}>
+            <img src={c.aboutImage} alt="ARMINSOL operations" className="card" style={{ width: '100%', aspectRatio: '374 / 420', objectFit: 'cover' }} loading="lazy" />
+          </Reveal>
         </div>
       </section>
 
-      {/* Solutions we provided */}
+      {/* Mission & Vision — two side-by-side cards */}
       <section className="section">
         <div className="container">
-          <Reveal><span className="eyebrow" style={{ display: 'inline-block', marginBottom: 18 }}>{c.label.solutions}</span></Reveal>
-          {c.solutions.map((s, i) => (
-            <Reveal key={i} delay={i * 0.05}>
-              <div className="sol">
-                <div className="sol__period">{s.period}</div>
-                <div>
-                  <h3 className="sol__client">{s.client}</h3>
-                  <div className="sol__loc">{s.location}</div>
-                </div>
-                <p className="sol__detail">{s.detail}</p>
+          <div className="split" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+            <Reveal>
+              <div className="card" style={{ padding: '34px 32px', height: '100%' }}>
+                <span className="eyebrow" style={{ marginBottom: 20 }}>{a.missionLabel}</span>
+                <p className="body" style={{ maxWidth: 'none' }}>{a.mission}</p>
               </div>
             </Reveal>
-          ))}
+            <Reveal delay={0.06}>
+              <div className="card" style={{ padding: '34px 32px', height: '100%' }}>
+                <span className="eyebrow" style={{ marginBottom: 20 }}>{a.visionLabel}</span>
+                <p className="body" style={{ maxWidth: 'none' }}>{a.vision}</p>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* Our logo */}
+      {/* Our Identity — mineral spectrum */}
       <section className="section">
         <div className="container split" style={{ display: 'grid', gridTemplateColumns: '1fr 0.8fr', gap: 64, alignItems: 'center' }}>
           <div>
-            <Reveal><span className="eyebrow">{c.label.ourLogo}</span></Reveal>
+            <Reveal><span className="eyebrow">{a.identityLabel}</span></Reveal>
             <Reveal delay={0.05}>
-              <h3 className="h-lede" style={{ maxWidth: 540, marginTop: 22 }}>{c.logoHeading}</h3>
+              <p className="statement" style={{ marginTop: 24 }}>{a.identityLine}</p>
             </Reveal>
             <Reveal delay={0.1}>
               <div className="logogrid">
@@ -82,12 +74,53 @@ export default function About() {
             </Reveal>
           </div>
           <Reveal delay={0.1}>
-            <img src={c.logoImage} alt="ARMINSOL logo" style={{ width: '100%', maxWidth: 320, margin: '0 auto' }} loading="lazy" />
+            <img src={c.logoImage} alt="ARMINSOL logo" style={{ width: '100%', maxWidth: 300, margin: '0 auto' }} loading="lazy" />
           </Reveal>
         </div>
       </section>
 
-      <CTA eyebrow="sayHello" />
+      {/* Brands We Carry */}
+      <section className="section">
+        <div className="container">
+          <Reveal><span className="eyebrow" style={{ marginBottom: 26 }}>{a.brandsLabel}</span></Reveal>
+          <Reveal delay={0.05}><p className="body" style={{ marginBottom: 32 }}>{a.brandsLine}</p></Reveal>
+          <Reveal delay={0.1}>
+            <div className="brandwall">
+              {a.brands.map((b) => {
+                const logo = c.brandLogoByName[b]
+                return (
+                  <div className="brandwall__cell" key={b}>
+                    {logo
+                      ? <img src={logo} alt={b} loading="lazy" />
+                      : <span className="brandwall__name">{b}</span>}
+                  </div>
+                )
+              })}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Our Clients */}
+      <section className="section">
+        <div className="container">
+          <Reveal><span className="eyebrow" style={{ marginBottom: 26 }}>{a.clientsLabel}</span></Reveal>
+          <Reveal delay={0.05}><p className="statement">{a.clientsLine}</p></Reveal>
+          <Reveal delay={0.1}>
+            <div className="chips" style={{ marginTop: 32 }}>
+              {c.home.trustedList.map((n) => <span className="chip" key={n} style={{ fontSize: 15, padding: '10px 20px' }}>{n}</span>)}
+              <span className="chip" style={{ fontSize: 15, padding: '10px 20px', color: 'var(--faint)', borderStyle: 'dashed' }}>{c.home.trustedNote}</span>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Closing */}
+      <section className="section">
+        <div className="container">
+          <Reveal><h2 className="h-cta" style={{ maxWidth: 900 }}>{a.closing}</h2></Reveal>
+        </div>
+      </section>
     </>
   )
 }

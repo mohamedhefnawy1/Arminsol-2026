@@ -66,8 +66,10 @@ export default function Navbar() {
             <NavLink
               key={item.to}
               to={item.to}
-              className="nav-link"
-              style={({ isActive }) => ({ fontSize: 16, letterSpacing: '-0.025em', color: isActive ? 'var(--text)' : 'var(--muted)', transition: 'color .3s var(--ease)' })}
+              className={item.to === '/contact' ? 'nav-cta' : 'nav-link'}
+              style={({ isActive }) => (item.to === '/contact'
+                ? { fontSize: 15, letterSpacing: '-0.02em' }
+                : { fontSize: 16, letterSpacing: '-0.025em', color: isActive ? 'var(--text)' : 'var(--muted)', transition: 'color .3s var(--ease)' })}
             >
               {item.label}
             </NavLink>

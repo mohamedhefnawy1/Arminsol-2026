@@ -19,6 +19,9 @@
   --nav-line: rgba(255, 255, 255, 0.22);
   /* silhouette keeps every logo visible regardless of its source colour; the dn1 filled mark is shown in real detail below */
   --logo-filter: grayscale(1) brightness(0) invert(1);
+  /* brief: amber-gold reserved for CTAs and accents */
+  --accent: #e9a13b;
+  --accent-ink: #171006;
 }
 
 :root[data-theme='light'] {
@@ -34,13 +37,15 @@
   --grid: rgba(0, 0, 0, 0.06);
   --nav-line: rgba(0, 0, 0, 0.22);
   --logo-filter: grayscale(1) brightness(0);
+  --accent: #a56d15;
+  --accent-ink: #ffffff;
 }
 
 :root {
   /* mineral colours — true-to-material, harmonised with the gold brand mark */
   --c-gold: #c9a227;       /* gold */
   --c-copper: #b5703a;     /* copper */
-  --c-lime: #9fb14a;       /* lime */
+  --c-lime: #c7bea6;       /* lime = limestone — a pale warm stone, never green (not in the logo) */
   --c-bauxite: #97552f;    /* bauxite (red-brown ore) */
   --c-silver: #adb2b8;     /* silver */
   --c-phosphates: #c8b478; /* phosphate — 2nd-from-top petal of the logo */
@@ -105,7 +110,9 @@ h1, h2, h3, h4 {
   letter-spacing: 0;
 }
 
-/* section eyebrow ".about" / ".services" */
+/* section eyebrow ".about" / ".services"
+   Heading text is stored verbatim; the lowercase look is a display transform,
+   so copy/paste and screen readers still get the original casing. */
 .eyebrow {
   display: flex;
   align-items: center;
@@ -113,8 +120,9 @@ h1, h2, h3, h4 {
   font-weight: 300;
   font-size: 14px;
   color: var(--muted);
+  text-transform: lowercase;
 }
-.eyebrow::before { content: '.'; }
+.eyebrow::before { content: '.'; color: var(--accent); font-weight: 500; }
 .eyebrow::after {
   content: '';
   flex: 1 1 auto;
@@ -122,6 +130,11 @@ h1, h2, h3, h4 {
   background: var(--line);
   margin-inline-start: 16px;
 }
+/* header-style link (e.g. "View all") */
+a.eyebrow { cursor: pointer; transition: color 0.3s var(--ease); }
+a.eyebrow:hover { color: var(--text); }
+a.contact-link { transition: opacity 0.3s var(--ease); }
+a.contact-link:hover { opacity: 0.65; }
 
 /* ---- type scale (measured) ---- */
 .display {            /* hero H1 — 104px */
@@ -201,7 +214,7 @@ h1, h2, h3, h4 {
   position: absolute;
   inset: 0;
   transform-origin: left center;
-  background: linear-gradient(90deg, transparent, var(--text) 90%);
+  background: linear-gradient(90deg, transparent, var(--accent) 90%);
 }
 
 /* ---- product category cards ---- */
@@ -230,16 +243,16 @@ h1, h2, h3, h4 {
   height: 8px;
   border-radius: 50%;
   flex: 0 0 auto;
-  background: #2ecc71;
+  background: var(--accent);
   display: inline-block;
 }
-/* solid green status dot (services cards) — no pulse */
+/* solid amber status dot (services cards) — no pulse */
 .dot-solid {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   flex: 0 0 auto;
-  background: #2ecc71;
+  background: var(--accent);
   display: inline-block;
 }
 .pcard__title {
@@ -286,9 +299,9 @@ h1, h2, h3, h4 {
 :root[data-theme='dark'] .brand:nth-child(1) img { filter: grayscale(1) invert(1); }
 :root[data-theme='light'] .brand:nth-child(1) img { filter: grayscale(1); }
 
-/* "Sourcing Available" status dot — pulses green → grey continuously */
+/* "Sourcing Available" status dot — pulses amber → grey continuously */
 @keyframes live-blink {
-  0%, 100% { background: #2ecc71; }
+  0%, 100% { background: var(--accent); }
   50% { background: #9a9a9a; }
 }
 .live-dot {
@@ -296,7 +309,7 @@ h1, h2, h3, h4 {
   height: 8px;
   border-radius: 999px;
   flex: 0 0 auto;
-  background: #2ecc71;
+  background: var(--accent);
   animation: live-blink 1.3s ease-in-out infinite;
 }
 
@@ -428,11 +441,14 @@ h1, h2, h3, h4 {
   padding: 0 var(--gutter);
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  border-right: 1px solid var(--grid);
   -webkit-mask-image: linear-gradient(transparent, #000 9%, #000 91%, transparent);
   mask-image: linear-gradient(transparent, #000 9%, #000 91%, transparent);
 }
+/* 8 column-start lines + one on the last column's end = 9 evenly-spaced lines
+   that all sit inside the gutters (border-right on the wrapper landed a gutter
+   too far out, which threw off the right-most line). */
 .gridlines__inner > span { border-left: 1px solid var(--grid); }
+.gridlines__inner > span:last-child { border-right: 1px solid var(--grid); }
 
 /* keep page content above the grid layer */
 main, footer { position: relative; z-index: 1; }
@@ -489,7 +505,7 @@ main, footer { position: relative; z-index: 1; }
 [dir='rtl'] .row:hover { padding-left: 0; padding-right: 14px; }
 [dir='rtl'] .navline__fill {
   transform-origin: right center;
-  background: linear-gradient(270deg, transparent, var(--text) 90%);
+  background: linear-gradient(270deg, transparent, var(--accent) 90%);
 }
 /* Arabic runs a touch larger for x-height parity with Manrope */
 :root[lang='ar'] body { letter-spacing: 0; }
@@ -497,7 +513,383 @@ main, footer { position: relative; z-index: 1; }
 :root[lang='ar'] .eyebrow::before,
 :root[lang='ar'] .stat__label::before { margin-left: 2px; }
 
+/* ============================================================
+   Production layer — designer-brief accents on the approved system
+   ============================================================ */
+
+/* keyboard focus */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+/* solid amber CTA (brief: primary buttons in amber-gold) */
+.btn--gold {
+  color: var(--accent-ink);
+  background: var(--accent);
+  border-color: transparent;
+}
+.btn--gold:hover { color: var(--accent-ink); border-color: transparent; filter: brightness(1.07); }
+
+/* hero video + sound toggle */
+.hero-video { position: relative; }
+.video-sound {
+  position: absolute;
+  inset-block-end: 16px;
+  inset-inline-end: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.video-sound:hover { background: rgba(0, 0, 0, 0.68); border-color: rgba(255, 255, 255, 0.65); }
+.video-sound svg { width: 16px; height: 16px; flex: 0 0 auto; }
+@media (max-width: 600px) { .video-sound span { display: none; } .video-sound { padding: 10px; } }
+
+/* hero CTA pair — buttons sit side by side, sized to content */
+.hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+.hero-cta .btn { width: auto; min-width: 210px; }
+
+/* brand wall — one cohesive panel; logos are monochrome silhouettes that
+   flip black↔white with the theme (via --logo-filter) and render at one
+   uniform height, brand names as text otherwise */
+.brandwall {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.brandwall__cell {
+  background: var(--bg);
+  min-height: 122px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 26px;
+  transition: background 0.3s var(--ease);
+}
+.brandwall__cell:hover { background: var(--card); }
+.brandwall__cell img {
+  height: 28px;            /* one uniform height for every logo */
+  width: auto;
+  max-width: 74%;
+  object-fit: contain;
+  filter: var(--logo-filter);
+  opacity: 0.66;
+  transition: opacity 0.3s var(--ease);
+}
+.brandwall__cell:hover img { opacity: 1; }
+.brandwall__name {
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  text-align: center;
+  line-height: 1.35;
+  transition: color 0.3s var(--ease);
+}
+.brandwall__cell:hover .brandwall__name { color: var(--text); }
+
+/* signature — mineral strata: the logo's six markets as one geological hairline */
+.strata { display: flex; height: 3px; width: 100%; }
+.strata span { flex: 1 1 0; }
+.strata span:nth-child(1) { background: var(--c-gold); }
+.strata span:nth-child(2) { background: var(--c-silver); }
+.strata span:nth-child(3) { background: var(--c-copper); }
+.strata span:nth-child(4) { background: var(--c-bauxite); }
+.strata span:nth-child(5) { background: var(--c-phosphates); }
+.strata span:nth-child(6) { background: var(--c-lime); }
+
+/* inline emphasis for facts ("Since 2016") */
+.hl { color: var(--accent); font-weight: 600; }
+
+/* ---- reading hierarchy ----
+   .statement = the one opening sentence of a section (a lede, not a heading)
+   .body      = supporting paragraphs, capped to a comfortable measure
+   Both keep line length inside ~60ch so the eye can track line to line. */
+.statement {
+  font-size: clamp(1.3rem, 1.85vw, 1.65rem);
+  line-height: 1.45;
+  letter-spacing: -0.022em;
+  font-weight: 500;
+  color: var(--text);
+  max-width: 24em;
+  margin: 0;
+}
+.body {
+  font-size: 1.0625rem;
+  line-height: 1.72;
+  color: var(--muted);
+  max-width: 58ch;
+  margin: 0;
+}
+.body + .body { margin-top: 1.1em; }
+.measure-sm { max-width: 46ch; }
+
+/* section heading that sits above body copy */
+.s-head {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* emphasized stat sentence (products) */
+.callout {
+  border-inline-start: 3px solid var(--accent);
+  padding-inline-start: 18px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text);
+  max-width: 620px;
+}
+
+/* what-we-offer photo cards */
+.ocard { display: block; height: 100%; }
+.ocard__media {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 6px;
+  filter: saturate(0.9);
+  transition: transform 0.5s var(--ease), filter 0.5s var(--ease);
+}
+.ocard:hover .ocard__media { transform: scale(1.03); filter: saturate(1.1); }
+.ocard__title { font-size: 1.3rem; font-weight: 500; letter-spacing: -0.02em; margin-top: 18px; color: var(--text); }
+.ocard__desc { color: var(--muted); margin-top: 10px; line-height: 1.6; font-size: 15px; max-width: 40ch; }
+
+/* why-choose feature bar — icon + label per benefit, split by hairlines
+   (a segmented strip, not cards); an amber rule wipes in on hover */
+.whygrid { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line-strong); }
+.whyitem {
+  position: relative;
+  padding: 34px 26px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.whyitem:not(:first-child) { border-inline-start: 1px solid var(--line); }
+.whyitem::after {
+  content: '';
+  position: absolute;
+  inset-block-start: -1px;
+  inset-inline-start: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: inline-start;
+  transition: transform 0.45s var(--ease);
+}
+.whyitem:hover::after { transform: scaleX(1); }
+.whyitem__ico { color: var(--accent); display: inline-flex; }
+.whyitem__ico svg { width: 32px; height: 32px; display: block; }
+.whyitem__title { font-size: 1.05rem; font-weight: 500; letter-spacing: -0.01em; line-height: 1.3; color: var(--text); }
+.whyitem__desc { color: var(--muted); font-size: 14px; line-height: 1.55; margin: 0; max-width: 24ch; }
+
+/* trusted-by marquee (brief: auto-scrolling client strip) */
+.marquee {
+  overflow: hidden;
+  direction: ltr;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 30px 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee__track { display: flex; width: max-content; animation: marquee 36s linear infinite; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  padding-inline-end: 40px;
+  white-space: nowrap;
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--muted);
+}
+.marquee__item::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--line-strong); }
+/* "and many more." closes the list — it is not a client, so it gets no separator dot */
+.marquee__item--note { color: var(--faint); font-weight: 400; font-size: 1rem; font-family: var(--font-mono); }
+.marquee__item--note::after { display: none; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* service cards with line icons */
+.svccard {
+  height: 100%;
+  padding: 30px 28px;
+  position: relative;
+  border: 1px solid var(--line);
+  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease), background 0.4s var(--ease);
+}
+/* an amber rule wipes across the top on hover */
+.svccard::before {
+  content: '';
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: inline-start;
+  transition: transform 0.45s var(--ease);
+}
+.svccard:hover {
+  border-color: var(--line-strong);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+  background: color-mix(in srgb, var(--text) 3%, var(--card));
+}
+.svccard:hover::before { transform: scaleX(1); }
+.svcico {
+  color: var(--accent);
+  display: inline-flex;
+  transition: transform 0.4s var(--ease);
+}
+.svccard:hover .svcico { transform: translateY(-4px) scale(1.08); }
+.svccard h3 { transition: color 0.3s var(--ease); }
+.svccard:hover h3 { color: var(--accent); }
+.svccard h3 { font-size: 1.3rem; font-weight: 500; letter-spacing: -0.02em; margin-top: 18px; line-height: 1.25; }
+.svccard p { color: var(--muted); margin: 14px 0 0; line-height: 1.62; max-width: 46ch; font-size: 15px; }
+.svccard ul { margin: 14px 0 0; padding-inline-start: 18px; color: var(--muted); line-height: 1.6; max-width: 46ch; }
+.svccard li { margin-bottom: 8px; }
+.svccard li::marker { color: var(--line-strong); }
+
+/* products bullets — quiet markers; amber stays reserved for CTAs */
+.flist__item { display: flex; gap: 12px; align-items: baseline; line-height: 1.55; }
+.flist__item::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--line-strong); flex: 0 0 auto; transform: translateY(-3px); }
+
+/* products — sticky category rail so a long page stays navigable */
+.catnav {
+  position: sticky;
+  top: 80px;
+  z-index: 5;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+/* padding-block only — a `padding` shorthand here would wipe .container's gutter */
+.catnav__inner {
+  display: flex;
+  /* first item flush to the gutter, last flush to the right, gaps split evenly.
+     The gap acts as a minimum for narrow screens, where the row scrolls instead. */
+  justify-content: space-between;
+  gap: 28px;
+  overflow-x: auto;
+  padding-block: 15px;
+  scrollbar-width: none;
+}
+.catnav__inner::-webkit-scrollbar { display: none; }
+.catnav a {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--faint);
+  white-space: nowrap;
+  transition: color 0.3s var(--ease);
+}
+.catnav a:hover { color: var(--text); }
+.catnav__n { color: var(--line-strong); margin-inline-end: 8px; }
+.cat-anchor { scroll-margin-top: 150px; }
+
+/* map embed */
+.mapframe {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  filter: grayscale(0.25) contrast(1.02);
+}
+
+/* footer */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 1.2fr;
+  gap: 48px;
+  padding: 64px 0 48px;
+}
+.footer-head { font-family: var(--font-mono); font-weight: 300; font-size: 13px; color: var(--faint); margin-bottom: 18px; text-transform: lowercase; }
+.footer-link { display: block; color: var(--muted); padding: 5px 0; transition: color 0.3s var(--ease); }
+.footer-link:hover { color: var(--text); }
+.footer-line { color: var(--muted); line-height: 1.7; }
+.footer-bottom {
+  border-top: 1px solid var(--line);
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--faint);
+}
+
+/* floating WhatsApp (brief: +966 56 977 3001) */
+.wa-fab {
+  position: fixed;
+  inset-inline-end: 22px;
+  bottom: 22px;
+  z-index: 40;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.wa-fab:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45); }
+
+/* header contact pill (brief: amber Contact button in the nav) */
+.nav-cta {
+  border: 1px solid var(--accent);
+  color: var(--accent) !important;
+  border-radius: 999px;
+  padding: 8px 18px;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+}
+.nav-cta:hover { background: var(--accent); color: var(--accent-ink) !important; }
+
+@media (max-width: 1100px) {
+  .whygrid { grid-template-columns: repeat(3, 1fr); border-top: 0; }
+  .whyitem { border-top: 1px solid var(--line-strong); }
+  .whyitem:not(:first-child) { border-inline-start: 0; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .brandwall { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 760px) {
+  .whygrid { grid-template-columns: repeat(2, 1fr); }
+  .brandwall { grid-template-columns: repeat(2, 1fr); }
+  .hero-cta .btn { width: 100%; }
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; padding: 48px 0 36px; }
+  .wa-fab { width: 48px; height: 48px; inset-inline-end: 16px; bottom: 16px; }
+  .statement { font-size: 1.2rem; }
+  .catnav__inner { gap: 20px; }
+  .catnav__n { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
   html { scroll-behavior: auto; }
+  .marquee__track { animation: none; flex-wrap: wrap; width: auto; }
+  .marquee { mask-image: none; -webkit-mask-image: none; }
 }
