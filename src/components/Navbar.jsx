@@ -66,6 +66,7 @@ export default function Navbar() {
             <NavLink
               key={item.to}
               to={item.to}
+              end={item.to === '/'}
               className={item.to === '/contact' ? 'nav-cta' : 'nav-link'}
               style={({ isActive }) => (item.to === '/contact'
                 ? { fontSize: 15, letterSpacing: '-0.02em' }
@@ -125,7 +126,7 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.06 + i * 0.05, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <NavLink to={item.to} className="mobile-link"
+                  <NavLink to={item.to} end={item.to === '/'} className="mobile-link"
                     style={({ isActive }) => ({ display: 'inline-block', padding: '8px 0', fontSize: 'clamp(2.6rem, 12vw, 3.6rem)', fontWeight: 500, letterSpacing: '-0.03em', color: isActive ? 'var(--text)' : 'var(--muted)' })}
                   >
                     {item.label}

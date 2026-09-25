@@ -4,7 +4,6 @@ import { LinkedIn } from './icons'
 
 export default function Footer() {
   const { c } = useI18n()
-  const s = c.services
   return (
     <footer>
       <div className="strata"><span /><span /><span /><span /><span /><span /></div>
@@ -17,7 +16,7 @@ export default function Footer() {
               <span style={{ fontWeight: 700, fontSize: 17, textTransform: 'uppercase' }}>ARMINSOL Trading</span>
             </Link>
             <p className="footer-line" style={{ marginTop: 18, maxWidth: 360 }}>{c.legalName}</p>
-            <p className="mono" style={{ fontSize: 13, color: 'var(--faint)', marginTop: 6 }}>{c.home.tagline}</p>
+            <p className="mono" style={{ fontSize: 13, color: 'var(--faint)', marginTop: 6 }}>{c.tagline}</p>
           </div>
 
           {/* quick links */}
@@ -31,7 +30,7 @@ export default function Footer() {
           {/* contact */}
           <div>
             <div className="footer-head">{c.ui.contactHead}</div>
-            <p className="footer-line" style={{ margin: '0 0 10px' }}>{s.contactAddr}</p>
+            <p className="footer-line" style={{ margin: '0 0 10px' }}>{c.contact.addr}</p>
             <a href={`tel:${c.phone.replace(/\s/g, '')}`} className="footer-link" style={{ direction: 'ltr', display: 'inline-block' }}>{c.phone}</a>
             <br />
             <a href={`mailto:${c.email}`} className="footer-link" style={{ direction: 'ltr', display: 'inline-block' }}>{c.email}</a>

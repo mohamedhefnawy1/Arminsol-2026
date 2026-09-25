@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsApp from './components/WhatsApp'
 import GridLines from './components/GridLines'
+import Meta from './components/Meta'
 import Home from './pages/Home'
 import Products from './pages/Products'
 import About from './pages/About'
@@ -12,8 +13,20 @@ import Services from './pages/Services'
 import Contact from './pages/Contact'
 
 function ScrollToTop() {
-  const { pathname } = useLocation()
-  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  const { pathname, hash } = useLocation()
+  useEffect(() => {
+    if (hash) {
+      // let the target route render, then scroll to the anchor
+      const id = decodeURIComponent(hash.slice(1))
+      const scroll = () => {
+        const el = document.getElementById(id)
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+      const r = requestAnimationFrame(() => setTimeout(scroll, 60))
+      return () => cancelAnimationFrame(r)
+    }
+    window.scrollTo(0, 0)
+  }, [pathname, hash])
   return null
 }
 
@@ -38,6 +51,7 @@ export default function App() {
   return (
     <>
       <ScrollToTop />
+      <Meta />
       <GridLines />
       <Navbar />
       <AnimatePresence mode="wait">
