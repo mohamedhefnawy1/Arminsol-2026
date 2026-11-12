@@ -4,7 +4,7 @@ import { useI18n } from '../i18n'
 
 // Preferred production domain (canonical). Update if the custom domain changes.
 const SITE = 'https://arminsol.com.sa'
-const KEY_BY_PATH = { '/': 'home', '/products': 'products', '/about': 'about', '/services': 'services', '/contact': 'contact' }
+const KEY_BY_PATH = { '/': 'home', '/products': 'products', '/products/normet': 'normet', '/about': 'about', '/services': 'services', '/contact': 'contact' }
 
 function upsert(selector, create) {
   let el = document.head.querySelector(selector)

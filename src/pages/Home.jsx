@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import Arrow from '../components/Arrow'
+import CheckBadge from '../components/CheckBadge'
 import { useI18n } from '../i18n'
 
 function SpeakerOff() {
@@ -17,14 +18,6 @@ function SpeakerOn() {
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M4 9v6h4l5 4V5L9 9H4z" />
       <path d="M16.5 8.8a5 5 0 0 1 0 6.4M19 6.5a8 8 0 0 1 0 11" />
-    </svg>
-  )
-}
-
-function CheckBadge() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M5 12.5l4.5 4.5L19 6.5" />
     </svg>
   )
 }
@@ -100,7 +93,7 @@ export default function Home() {
                 <div className="diststrip__item" key={d.name}>
                   <img className="diststrip__logo" src={d.logo} alt={d.name} loading="lazy" />
                   <div>
-                    <span className="diststrip__badge"><CheckBadge /> {c.ui.officialDistributor}</span>
+                    <span className="diststrip__badge"><CheckBadge size={16} /> {d.badge || c.ui.officialDistributor}</span>
                     <div className="diststrip__status">{d.status}</div>
                   </div>
                 </div>
