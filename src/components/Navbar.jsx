@@ -149,12 +149,12 @@ export default function Navbar() {
       document.body)}
 
       <style>{`
-        /* four links + pills + Contact button need ~1240px before they crowd the logo */
-        @media (max-width: 1240px) {
+        /* four links + pills + Contact button need ~1150px before they crowd the logo */
+        @media (max-width: 1150px) {
           .nav-links { display: none !important; }
           .nav-burger { display: inline-flex !important; }
         }
-        @media (min-width: 1241px) { .mobile-overlay { display: none !important; } }
+        @media (min-width: 1151px) { .mobile-overlay { display: none !important; } }
         .nav-link:hover { color: var(--text) !important; }
         .mobile-link:hover { color: var(--text) !important; }
       `}</style>

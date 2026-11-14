@@ -8,6 +8,7 @@ import { useI18n } from '../i18n'
 export default function Products() {
   const { c } = useI18n()
   const p = c.products
+  const n = c.normet
   return (
     <>
       {/* Hero */}
@@ -52,6 +53,34 @@ export default function Products() {
       {p.categories.map((cat, i) => (
         <CategorySection key={cat.id} cat={cat} imageFirst={i % 2 === 0} />
       ))}
+
+      {/* Normet — brand header, then one section per Normet category */}
+      <section className="svc-section cat-anchor" id="normet">
+        <div className="container">
+          <Reveal>
+            <div className="partner-card__head">
+              <img className="partner-card__logo" src={c.normetLogo} alt="Normet" loading="lazy" />
+              <span className="partner-card__badge"><CheckBadge /> {n.status}</span>
+            </div>
+          </Reveal>
+          <Reveal delay={0.04}><h2 className="s-head" style={{ marginTop: 22 }}>{n.rangeTitle}</h2></Reveal>
+          <Reveal delay={0.08}><p className="body" style={{ marginTop: 18 }}>{n.rangeIntro}</p></Reveal>
+          <Reveal delay={0.12}>
+            <div className="chips" style={{ marginTop: 22 }}>
+              {n.categories.map((cat) => (
+                <a className="chip chip--link" key={cat.id} href={`#${cat.id}`} style={{ fontSize: 14, padding: '9px 16px' }}>{cat.short}</a>
+              ))}
+            </div>
+          </Reveal>
+          <Reveal delay={0.16}>
+            <Link to="/products/normet" className="btn" style={{ marginTop: 28 }}>{n.exploreCta} <Arrow /></Link>
+          </Reveal>
+        </div>
+      </section>
+      {n.categories.map((cat, i) => {
+        const k = p.categories.length + i
+        return <CategorySection key={cat.id} cat={{ ...cat, n: String(k + 1).padStart(2, '0') }} imageFirst={k % 2 === 0} />
+      })}
 
       {/* Custom Sourcing CTA */}
       <section className="section">

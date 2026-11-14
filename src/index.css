@@ -928,6 +928,26 @@ main, footer { position: relative; z-index: 1; }
 .partner-card__more { margin-top: auto; padding-top: 18px; align-self: flex-start; }
 .partner-card__more:hover .arrow { transform: translate(3px, -3px); }
 [dir='rtl'] .partner-card__more:hover .arrow { transform: scaleX(-1) translate(3px, -3px); }
+/* brand sub-header inside "What We Offer" (Home): logo + badge, link at the far end, one line below */
+.offerbrand { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 14px 24px; margin: 72px 0 40px; padding-top: 40px; border-top: 1px solid var(--line); }
+.offerbrand__more { margin-top: 0; }
+.offerbrand__more:hover .arrow { transform: translate(3px, -3px); }
+[dir='rtl'] .offerbrand__more:hover .arrow { transform: scaleX(-1) translate(3px, -3px); }
+.offerbrand__line { grid-column: 1 / -1; margin: 0; }
+@media (max-width: 760px) {
+  .offerbrand { grid-template-columns: 1fr; margin: 52px 0 32px; padding-top: 32px; }
+  .offerbrand__more { justify-self: start; order: 3; }
+}
+/* chips that jump to a section */
+.chip--link { transition: color 0.3s var(--ease), border-color 0.3s var(--ease); }
+.chip--link:hover { color: var(--text); border-color: var(--accent); }
+/* small phones: let grid cells and chips shrink instead of pushing past the viewport */
+.indgrid__item { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 420px) {
+  .indgrid__item { padding: 20px 14px; gap: 10px; font-size: 0.95rem; }
+  .chip { white-space: normal; }
+}
+@media (max-width: 360px) { .svc-hero-title { font-size: 2.3rem; overflow-wrap: break-word; } }
 /* three official partners side by side; stacks on smaller screens */
 .partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 

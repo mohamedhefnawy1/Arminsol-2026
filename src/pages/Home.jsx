@@ -121,6 +121,32 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
+
+          {/* Normet range — one card per Normet category */}
+          <Reveal>
+            <div className="offerbrand">
+              <div className="partner-card__head">
+                <img className="partner-card__logo" src={c.normetLogo} alt="Normet" loading="lazy" />
+                <span className="partner-card__badge"><CheckBadge size={15} /> {c.normet.status}</span>
+              </div>
+              <Link to="/products/normet" className="ocard__more offerbrand__more">{c.normet.exploreCta} <Arrow size={16} /></Link>
+              <p className="body offerbrand__line">{c.normet.offerLine}</p>
+            </div>
+          </Reveal>
+          <div className="offergrid">
+            {c.normet.categories.map((cat, i) => (
+              <Reveal key={cat.id} delay={(i % 3) * 0.06}>
+                <Link to={`/products#${cat.id}`} className="ocard">
+                  <img className="ocard__media" src={cat.image} alt={cat.short} loading="lazy" />
+                  <div className="ocard__body">
+                    <div className="ocard__title">{cat.short}</div>
+                    <p className="ocard__desc">{cat.card}</p>
+                    <span className="ocard__more">{c.ui.learnMore} <Arrow size={16} /></span>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
