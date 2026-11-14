@@ -24,7 +24,7 @@ export default function Normet() {
           <Reveal delay={0.08}><p className="body" style={{ marginTop: 28, fontSize: '1.15rem' }}>{n.intro}</p></Reveal>
           <Reveal delay={0.12}>
             <div className="hero-cta">
-              <Link to="/contact" className="btn btn--gold">{c.ui.requestQuote} <Arrow /></Link>
+              <Link to="/contact?inquiry=rfq" className="btn btn--gold">{c.ui.requestQuote} <Arrow /></Link>
               <Link to="/products" className="btn">{n.allProducts} <Arrow /></Link>
             </div>
           </Reveal>
@@ -89,7 +89,7 @@ export default function Normet() {
 
       {/* RFQ CTA */}
       <GlassCTA image={c.img.normetFleet} title={n.ctaTitle} copy={n.ctaCopy}>
-        <Link to="/contact" className="btn btn--gold">{c.ui.sendRfqShort} <Arrow /></Link>
+        <Link to="/contact?inquiry=rfq" className="btn btn--gold">{c.ui.sendRfqShort} <Arrow /></Link>
       </GlassCTA>
     </>
   )

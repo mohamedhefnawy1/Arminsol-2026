@@ -59,7 +59,7 @@ export default function Products() {
 
       {/* Custom Sourcing CTA */}
       <GlassCTA image={c.img.spareParts} title={p.customLabel} copy={p.customCopy}>
-        <Link to="/contact" className="btn btn--gold">{p.customCta} <Arrow /></Link>
+        <Link to="/contact?inquiry=rfq" className="btn btn--gold">{p.customCta} <Arrow /></Link>
       </GlassCTA>
     </>
   )

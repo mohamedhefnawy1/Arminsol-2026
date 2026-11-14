@@ -30,8 +30,8 @@ export default function CategorySection({ cat, imageFirst, quoteLabel }) {
       {cat.note && <Reveal delay={0.14}><p className="mono" style={{ marginTop: 20, fontSize: 12.5, color: 'var(--faint)' }}>{cat.note}</p></Reveal>}
       {quoteLabel && (
         <Reveal delay={0.16}>
-          {/* opens the inquiry form with this category already filled in */}
-          <Link to={`/contact?product=${cat.id}`} className="btn btn--gold" style={{ marginTop: 28 }}>{quoteLabel} <Arrow /></Link>
+          {/* opens the inquiry form with "Request for Quotation" already selected */}
+          <Link to="/contact?inquiry=rfq" className="btn btn--gold" style={{ marginTop: 28 }}>{quoteLabel} <Arrow /></Link>
         </Reveal>
       )}
     </div>

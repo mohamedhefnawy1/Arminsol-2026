@@ -149,7 +149,7 @@ export default function Home() {
 
       {/* ---- Custom Sourcing CTA ---- */}
       <GlassCTA image={c.img.drilling2} title={h.sourcingTitle} copy={h.sourcingCopy}>
-        <Link to="/contact" className="btn btn--gold">{h.sourcingCta} <Arrow /></Link>
+        <Link to="/contact?inquiry=rfq" className="btn btn--gold">{h.sourcingCta} <Arrow /></Link>
       </GlassCTA>
 
       {/* ---- Serving Leading Companies ---- */}
@@ -168,7 +168,7 @@ export default function Home() {
 
       {/* ---- Final CTA ---- */}
       <GlassCTA image={c.aboutImage} title={h.finalTitle} copy={h.finalCopy}>
-        <Link to="/contact" className="btn btn--gold">{h.finalCtaQuote} <Arrow /></Link>
+        <Link to="/contact?inquiry=rfq" className="btn btn--gold">{h.finalCtaQuote} <Arrow /></Link>
         <Link to="/contact" className="btn">{h.finalCtaContact} <Arrow /></Link>
       </GlassCTA>
     </>
