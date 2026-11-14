@@ -26,6 +26,14 @@ export default function Home() {
   const { c } = useI18n()
   const h = c.home
   const reel = [...h.servingList, ...h.servingList]
+  // One list for "What We Offer": Arminsol's own categories, then the Normet lines.
+  // Normet parts & services are covered by the Spare Parts card, so they are not repeated.
+  const offers = [
+    ...h.offers,
+    ...c.normet.categories
+      .filter((cat) => cat.id !== 'normet-parts-services')
+      .map((cat) => ({ title: cat.short, desc: cat.card, image: cat.image, to: `/products#${cat.id}` })),
+  ]
   const videoRef = useRef(null)
   const [soundOn, setSoundOn] = useState(false)
   useEffect(() => { if (videoRef.current) videoRef.current.muted = true }, [])
@@ -108,39 +116,13 @@ export default function Home() {
         <div className="container">
           <Reveal><span className="eyebrow" style={{ marginBottom: 40 }}>{h.offerLabel}</span></Reveal>
           <div className="offergrid">
-            {h.offers.map((o, i) => (
+            {offers.map((o, i) => (
               <Reveal key={o.title} delay={(i % 4) * 0.06} className={o.feature ? 'offergrid__feature' : undefined}>
                 <Link to={o.to} className="ocard">
                   <img className="ocard__media" src={o.image} alt={o.title} loading="lazy" />
                   <div className="ocard__body">
                     <div className="ocard__title">{o.title}</div>
                     <p className="ocard__desc">{o.desc}</p>
-                    <span className="ocard__more">{c.ui.learnMore} <Arrow size={16} /></span>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* Normet range — one card per Normet category */}
-          <Reveal>
-            <div className="offerbrand">
-              <div className="partner-card__head">
-                <img className="partner-card__logo" src={c.normetLogo} alt="Normet" loading="lazy" />
-                <span className="partner-card__badge"><CheckBadge size={15} /> {c.normet.status}</span>
-              </div>
-              <Link to="/products/normet" className="ocard__more offerbrand__more">{c.normet.exploreCta} <Arrow size={16} /></Link>
-              <p className="body offerbrand__line">{c.normet.offerLine}</p>
-            </div>
-          </Reveal>
-          <div className="offergrid">
-            {c.normet.categories.map((cat, i) => (
-              <Reveal key={cat.id} delay={(i % 3) * 0.06}>
-                <Link to={`/products#${cat.id}`} className="ocard">
-                  <img className="ocard__media" src={cat.image} alt={cat.short} loading="lazy" />
-                  <div className="ocard__body">
-                    <div className="ocard__title">{cat.short}</div>
-                    <p className="ocard__desc">{cat.card}</p>
                     <span className="ocard__more">{c.ui.learnMore} <Arrow size={16} /></span>
                   </div>
                 </Link>

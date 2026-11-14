@@ -893,7 +893,8 @@ main, footer { position: relative; z-index: 1; }
 .diststrip__status { margin-top: 6px; font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.35; }
 
 /* what-we-offer grid — 4 cards, first spans the row as a feature */
-.offergrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px 32px; align-items: start; }
+/* feature card + eight cards: two rows of four on wide screens, pairs below that */
+.offergrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 44px 28px; align-items: start; }
 .offergrid__feature { grid-column: 1 / -1; }
 .offergrid__feature .ocard { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: center; }
 .offergrid__feature .ocard__media { aspect-ratio: 16 / 9; margin: 0; }
@@ -928,16 +929,6 @@ main, footer { position: relative; z-index: 1; }
 .partner-card__more { margin-top: auto; padding-top: 18px; align-self: flex-start; }
 .partner-card__more:hover .arrow { transform: translate(3px, -3px); }
 [dir='rtl'] .partner-card__more:hover .arrow { transform: scaleX(-1) translate(3px, -3px); }
-/* brand sub-header inside "What We Offer" (Home): logo + badge, link at the far end, one line below */
-.offerbrand { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 14px 24px; margin: 72px 0 40px; padding-top: 40px; border-top: 1px solid var(--line); }
-.offerbrand__more { margin-top: 0; }
-.offerbrand__more:hover .arrow { transform: translate(3px, -3px); }
-[dir='rtl'] .offerbrand__more:hover .arrow { transform: scaleX(-1) translate(3px, -3px); }
-.offerbrand__line { grid-column: 1 / -1; margin: 0; }
-@media (max-width: 760px) {
-  .offerbrand { grid-template-columns: 1fr; margin: 52px 0 32px; padding-top: 32px; }
-  .offerbrand__more { justify-self: start; order: 3; }
-}
 /* chips that jump to a section */
 .chip--link { transition: color 0.3s var(--ease), border-color 0.3s var(--ease); }
 .chip--link:hover { color: var(--text); border-color: var(--accent); }
@@ -973,10 +964,10 @@ form select {
 .btn--whatsapp { display: inline-flex; align-items: center; gap: 3px; background: var(--accent); color: var(--accent-ink); border: 1px solid transparent; border-radius: 8px; padding: 14px 22px; font-family: var(--font-mono); font-size: 14px; font-weight: 500; transition: filter 0.3s var(--ease); }
 .btn--whatsapp:hover { filter: brightness(1.07); }
 
+@media (max-width: 1280px) { .offergrid { grid-template-columns: repeat(2, 1fr); gap: 44px 32px; } }
 @media (max-width: 1100px) {
   .partner-grid { grid-template-columns: 1fr; }
   .diststrip { grid-template-columns: 1fr; }
-  .offergrid { grid-template-columns: repeat(2, 1fr); }
   .facts { grid-template-columns: repeat(2, 1fr); }
   .svcgrid { grid-template-columns: repeat(2, 1fr); }
   .whygrid { grid-template-columns: repeat(3, 1fr); border-top: 0; }

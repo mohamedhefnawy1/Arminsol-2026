@@ -83,7 +83,7 @@ const S = {
       offerLabel: 'What We Offer',
       offers: [
         { title: 'Drilling & Exploration', desc: 'Diamond, RC, DTH and top-hammer drilling tools and consumables.', image: assets.img.drilling, to: '/products#drilling', feature: true },
-        { title: 'Spare Parts', desc: 'Genuine and replacement parts for mining and construction fleets.', image: assets.img.spareParts, to: '/products#spare-parts' },
+        { title: 'Spare Parts', desc: 'Genuine and replacement parts for mining and construction fleets, including genuine Normet, Xrock and Aliva parts and service support.', image: assets.img.spareParts, to: '/products#spare-parts' },
         { title: 'Tires', desc: 'OTR, TBR and crane & port tires for demanding operations.', image: assets.img.tires, to: '/products#tires' },
         { title: 'Safety & PPE', desc: 'Helmets, workwear and a full personal protective equipment range.', image: assets.img.safety, to: '/products#safety' },
       ],
@@ -186,7 +186,6 @@ const S = {
       allProducts: 'All Products',
       rangeTitle: 'Normet Product Range',
       rangeIntro: 'As the official agent and distributor of Normet in Saudi Arabia, Arminsol supplies the full Normet range for underground mining, tunnelling and construction.',
-      offerLine: 'The full Normet range, supplied and supported in Saudi Arabia by Arminsol.',
       exploreCta: 'Explore the Normet Range',
       heroAlt: 'Normet underground equipment',
       railLabel: 'Normet product categories',
@@ -200,7 +199,7 @@ const S = {
       ],
       categories: [
         {
-          id: 'normet-equipment', n: '01', short: 'Underground Equipment', card: 'Concrete spraying and transport, explosives charging, scaling, lifting and underground logistics.', title: 'Underground Mining & Tunnelling Equipment', image: assets.img.normetEquipment, list: true,
+          id: 'normet-equipment', n: '01', short: 'Underground Equipment', card: 'Normet machines for concrete spraying and transport, explosives charging, scaling, lifting and logistics.', title: 'Underground Mining & Tunnelling Equipment', image: assets.img.normetEquipment, list: true,
           para: 'Purpose-built machines for every stage of the underground process, available with diesel or Normet SmartDrive battery-electric drivelines.',
           subLabel: 'Equipment range',
           sub: [
@@ -226,13 +225,13 @@ const S = {
           sub: ['Rotor Spraying Machines', 'Spraying Manipulators', 'Dosing Units', 'Mortar Machines'],
         },
         {
-          id: 'normet-rock-reinforcement', n: '04', short: 'Rock Reinforcement', card: 'Dynamic and static rock bolts, ground-control resins and fissure grouting.', title: 'Rock Reinforcement & Ground Support', image: assets.img.normetGround,
+          id: 'normet-rock-reinforcement', n: '04', short: 'Rock Reinforcement', card: 'Normet dynamic and static rock bolts, ground-control resins and fissure grouting.', title: 'Rock Reinforcement & Ground Support', image: assets.img.normetGround,
           para: 'Rock reinforcement for ground control in mining and tunnelling — static support for conventional conditions, dynamic support for seismic and squeezing ground, and civil support for infrastructure projects.',
           subLabel: 'Solutions',
           sub: ['Dynamic Rock Bolts', 'Static Rock Bolts', 'Civil Support', 'Ground-Control Injection Resins', 'Rock Fissure Grouting'],
         },
         {
-          id: 'normet-construction-chemicals', n: '05', short: 'Construction Chemicals', card: 'Sprayed-concrete admixtures, injection resins, waterproofing and repair mortars.', title: 'Construction Chemicals', image: assets.img.normetChemicals,
+          id: 'normet-construction-chemicals', n: '05', short: 'Construction Chemicals', card: 'Normet sprayed-concrete admixtures, injection resins, waterproofing and repair mortars.', title: 'Construction Chemicals', image: assets.img.normetChemicals,
           para: 'Construction chemicals for mining, tunnelling and civil construction — from sprayed-concrete admixtures to water control, waterproofing and repair.',
           subLabel: 'Product groups',
           sub: ['Sprayed-Concrete Admixtures', 'Readymix & Precast Admixtures', 'TBM Additives & Soil Conditioners', 'Injection & Water-Control Resins', 'Spray-Applied Waterproofing Membranes', 'Repair Mortars'],
@@ -338,7 +337,7 @@ const S = {
       offerLabel: 'ما الذي نقدّمه',
       offers: [
         { title: 'الحفر والاستكشاف', desc: 'أدوات ومستهلكات الحفر الماسي وRC وDTH والمطرقة العلوية.', image: assets.img.drilling, to: '/products#drilling', feature: true },
-        { title: 'قطع الغيار', desc: 'قطع غيار أصلية وبديلة لأساطيل التعدين والإنشاءات.', image: assets.img.spareParts, to: '/products#spare-parts' },
+        { title: 'قطع الغيار', desc: 'قطع غيار أصلية وبديلة لأساطيل التعدين والإنشاءات، تشمل قطع غيار Normet وXrock وAliva الأصلية ودعم الخدمة.', image: assets.img.spareParts, to: '/products#spare-parts' },
         { title: 'الإطارات', desc: 'إطارات OTR وTBR والرافعات والموانئ للعمليات الشاقّة.', image: assets.img.tires, to: '/products#tires' },
         { title: 'السلامة ومعدات الوقاية الشخصية', desc: 'خوذ وملابس عمل ومجموعة كاملة من معدّات الوقاية الشخصية.', image: assets.img.safety, to: '/products#safety' },
       ],
@@ -441,7 +440,6 @@ const S = {
       allProducts: 'جميع المنتجات',
       rangeTitle: 'مجموعة منتجات Normet',
       rangeIntro: 'بصفتها الوكيل والموزع الرسمي لشركة Normet في المملكة العربية السعودية، توفّر أرمينسول المجموعة الكاملة من منتجات Normet للتعدين تحت الأرض والأنفاق والإنشاءات.',
-      offerLine: 'المجموعة الكاملة من Normet، بتوريد ودعم أرمينسول في المملكة العربية السعودية.',
       exploreCta: 'استكشف مجموعة Normet',
       heroAlt: 'معدّات Normet للعمل تحت الأرض',
       railLabel: 'فئات منتجات Normet',
@@ -455,7 +453,7 @@ const S = {
       ],
       categories: [
         {
-          id: 'normet-equipment', n: '01', short: 'المعدّات تحت الأرض', card: 'رشّ الخرسانة ونقلها، شحن المتفجّرات، إزالة الصخور المفكّكة، الرفع والنقل تحت الأرض.', title: 'معدّات التعدين والأنفاق تحت الأرض', image: assets.img.normetEquipment, list: true,
+          id: 'normet-equipment', n: '01', short: 'المعدّات تحت الأرض', card: 'آليات Normet لرشّ الخرسانة ونقلها وشحن المتفجّرات وإزالة الصخور المفكّكة والرفع والنقل.', title: 'معدّات التعدين والأنفاق تحت الأرض', image: assets.img.normetEquipment, list: true,
           para: 'آليات مصمّمة خصيصًا لكل مرحلة من مراحل العمل تحت الأرض، متوفّرة بمحرّكات ديزل أو بمنظومة الدفع الكهربائية بالبطاريات Normet SmartDrive.',
           subLabel: 'مجموعة المعدّات',
           sub: [
@@ -481,13 +479,13 @@ const S = {
           sub: ['آلات الرشّ الدوّارة (Rotor)', 'أذرع الرشّ (Manipulators)', 'وحدات الجرعات', 'آلات المونة'],
         },
         {
-          id: 'normet-rock-reinforcement', n: '04', short: 'تدعيم الصخور', card: 'براغي الصخور الديناميكية والساكنة وراتنجات التحكّم بالتربة وحقن الشقوق.', title: 'تدعيم الصخور ودعم التربة', image: assets.img.normetGround,
+          id: 'normet-rock-reinforcement', n: '04', short: 'تدعيم الصخور', card: 'براغي الصخور الديناميكية والساكنة وراتنجات التحكّم بالتربة وحقن الشقوق من Normet.', title: 'تدعيم الصخور ودعم التربة', image: assets.img.normetGround,
           para: 'أنظمة تدعيم الصخور للتحكّم بالتربة في التعدين وحفر الأنفاق — دعم ساكن للظروف الاعتيادية، ودعم ديناميكي للصخور الزلزالية والمنضغطة، ودعم مدني لمشاريع البنية التحتية.',
           subLabel: 'الحلول',
           sub: ['براغي الصخور الديناميكية', 'براغي الصخور الساكنة', 'الدعم المدني', 'راتنجات الحقن للتحكّم بالتربة', 'حقن شقوق الصخور'],
         },
         {
-          id: 'normet-construction-chemicals', n: '05', short: 'كيماويات البناء', card: 'إضافات الخرسانة المرشوشة وراتنجات الحقن والعزل المائي ومونة الترميم.', title: 'كيماويات البناء', image: assets.img.normetChemicals,
+          id: 'normet-construction-chemicals', n: '05', short: 'كيماويات البناء', card: 'إضافات الخرسانة المرشوشة وراتنجات الحقن والعزل المائي ومونة الترميم من Normet.', title: 'كيماويات البناء', image: assets.img.normetChemicals,
           para: 'كيماويات بناء للتعدين وحفر الأنفاق والإنشاءات المدنية — من إضافات الخرسانة المرشوشة إلى التحكّم بالمياه والعزل المائي والترميم.',
           subLabel: 'مجموعات المنتجات',
           sub: ['إضافات الخرسانة المرشوشة', 'إضافات الخرسانة الجاهزة ومسبقة الصبّ', 'إضافات آلات حفر الأنفاق (TBM) ومحسّنات التربة', 'راتنجات الحقن والتحكّم بالمياه', 'أغشية العزل المائي المرشوشة', 'مونة الترميم'],
