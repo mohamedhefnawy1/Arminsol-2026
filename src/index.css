@@ -948,7 +948,10 @@ main, footer { position: relative; z-index: 1; }
 /* three official partners side by side; stacks on smaller screens */
 .partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
-/* sourcing CTA (Home) — product photo with the copy on a "liquid glass" panel:
+/* sourcing CTA button alignment (Home) */
+.sourcing-cta { display: flex; justify-content: flex-end; }
+
+/* glass CTA banner — product photo with the copy on a "liquid glass" panel:
    a frosted, light-catching pane that blurs and saturates the photo behind it */
 .sourcing { border-radius: 8px; overflow: hidden; background: var(--card); }
 .sourcing__stage { position: relative; display: flex; align-items: center; min-height: 460px; padding: clamp(20px, 5vw, 56px); isolation: isolate; }
@@ -1037,6 +1040,7 @@ form select {
   .indgrid { grid-template-columns: repeat(2, 1fr); }
   .facts { grid-template-columns: repeat(2, 1fr); }
   .svcgrid { grid-template-columns: 1fr; }
+  .sourcing-cta { justify-content: flex-start; }
   .sourcing__stage { min-height: 420px; align-items: flex-end; }
   .sourcing__glass { border-radius: 22px; }
   .sourcing__glass .btn { width: 100%; min-width: 0; white-space: normal; }

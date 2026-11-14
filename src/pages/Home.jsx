@@ -148,9 +148,24 @@ export default function Home() {
       </section>
 
       {/* ---- Custom Sourcing CTA ---- */}
-      <GlassCTA image={c.img.drilling2} title={h.sourcingTitle} copy={h.sourcingCopy}>
-        <Link to="/contact?inquiry=rfq" className="btn btn--gold">{h.sourcingCta} <Arrow /></Link>
-      </GlassCTA>
+      <section className="section">
+        <div className="container">
+          <Reveal>
+            <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+              <div className="strata"><span /><span /><span /><span /><span /><span /></div>
+              <div className="split" style={{ display: 'grid', gridTemplateColumns: '1.3fr 0.7fr', gap: 40, alignItems: 'center', padding: 'clamp(32px, 5vw, 52px)' }}>
+                <div>
+                  <h2 className="s-head">{h.sourcingTitle}</h2>
+                  <p className="body" style={{ marginTop: 16 }}>{h.sourcingCopy}</p>
+                </div>
+                <div className="sourcing-cta">
+                  <Link to="/contact?inquiry=rfq" className="btn btn--gold">{h.sourcingCta} <Arrow /></Link>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       {/* ---- Serving Leading Companies ---- */}
       <section className="section">
