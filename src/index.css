@@ -929,9 +929,13 @@ main, footer { position: relative; z-index: 1; }
 .partner-card__more { margin-top: auto; padding-top: 18px; align-self: flex-start; }
 .partner-card__more:hover .arrow { transform: translate(3px, -3px); }
 [dir='rtl'] .partner-card__more:hover .arrow { transform: scaleX(-1) translate(3px, -3px); }
-/* chips that jump to a section */
-.chip--link { transition: color 0.3s var(--ease), border-color 0.3s var(--ease); }
-.chip--link:hover { color: var(--text); border-color: var(--accent); }
+/* product category sections: side by side on desktop; from tablet portrait down they
+   stack with the photo on top, so text and chips get the full width */
+@media (max-width: 900px) {
+  .catsplit { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .catsplit__media { order: -1; }
+  .catsplit__media img { aspect-ratio: 16 / 9 !important; }
+}
 /* small phones: let grid cells and chips shrink instead of pushing past the viewport */
 .indgrid__item { min-width: 0; overflow-wrap: anywhere; }
 @media (max-width: 420px) {

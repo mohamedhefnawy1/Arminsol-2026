@@ -5,7 +5,7 @@ import Arrow from './Arrow'
 /** Alternating image / text block used for product categories (Products, Normet). */
 export default function CategorySection({ cat, imageFirst }) {
   const image = (
-    <Reveal delay={0.05}>
+    <Reveal delay={0.05} className="catsplit__media">
       <img src={cat.image} alt={cat.title} className="card" style={{ width: '100%', aspectRatio: '4 / 3', objectFit: 'cover' }} loading="lazy" />
     </Reveal>
   )
@@ -36,7 +36,7 @@ export default function CategorySection({ cat, imageFirst }) {
   )
   return (
     <section className="svc-section cat-anchor" id={cat.id}>
-      <div className="container split" style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 56, alignItems: 'center' }}>
+      <div className="container split catsplit" style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 56, alignItems: 'center' }}>
         {imageFirst ? <>{image}{text}</> : <>{text}{image}</>}
       </div>
     </section>
