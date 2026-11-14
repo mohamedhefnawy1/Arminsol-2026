@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom'
 import Reveal from './Reveal'
 import Arrow from './Arrow'
 
-/** Alternating image / text block used for product categories (Products, Normet). */
+/** Alternating image / text block used for product categories (Products, Normet).
+ *  The photo always gets the narrower column, so every photo is the same size. */
 export default function CategorySection({ cat, imageFirst, quoteLabel }) {
   const image = (
     <Reveal delay={0.05} className="catsplit__media">
@@ -37,7 +38,7 @@ export default function CategorySection({ cat, imageFirst, quoteLabel }) {
   )
   return (
     <section className="svc-section cat-anchor" id={cat.id}>
-      <div className="container split catsplit" style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 56, alignItems: 'center' }}>
+      <div className="container split catsplit" style={{ display: 'grid', gridTemplateColumns: imageFirst ? '0.85fr 1.15fr' : '1.15fr 0.85fr', gap: 56, alignItems: 'center' }}>
         {imageFirst ? <>{image}{text}</> : <>{text}{image}</>}
       </div>
     </section>

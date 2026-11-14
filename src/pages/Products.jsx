@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import Arrow from '../components/Arrow'
+import GlassCTA from '../components/GlassCTA'
 import CheckBadge from '../components/CheckBadge'
 import CategorySection from '../components/CategorySection'
 import { useI18n } from '../i18n'
@@ -57,20 +58,9 @@ export default function Products() {
       ))}
 
       {/* Custom Sourcing CTA */}
-      <section className="section">
-        <div className="container">
-          <Reveal>
-            <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
-              <div className="strata"><span /><span /><span /><span /><span /><span /></div>
-              <div style={{ padding: 'clamp(32px, 5vw, 56px)' }}>
-                <h2 className="s-head">{p.customLabel}</h2>
-                <p className="body" style={{ marginTop: 18 }}>{p.customCopy}</p>
-                <Link to="/contact" className="btn btn--gold" style={{ marginTop: 28 }}>{p.customCta} <Arrow /></Link>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <GlassCTA image={c.img.spareParts} title={p.customLabel} copy={p.customCopy}>
+        <Link to="/contact" className="btn btn--gold">{p.customCta} <Arrow /></Link>
+      </GlassCTA>
     </>
   )
 }

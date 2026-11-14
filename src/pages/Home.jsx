@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import Arrow from '../components/Arrow'
+import GlassCTA from '../components/GlassCTA'
 import CheckBadge from '../components/CheckBadge'
 import { useI18n } from '../i18n'
 
@@ -146,24 +147,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---- Custom Sourcing CTA — copy sits on a glass panel over a product photo ---- */}
-      <section className="section">
-        <div className="container">
-          <Reveal>
-            <div className="sourcing">
-              <div className="strata"><span /><span /><span /><span /><span /><span /></div>
-              <div className="sourcing__stage">
-                <img className="sourcing__img" src={c.img.drilling2} alt="" loading="lazy" />
-                <div className="sourcing__glass">
-                  <h2 className="s-head">{h.sourcingTitle}</h2>
-                  <p className="sourcing__copy">{h.sourcingCopy}</p>
-                  <Link to="/contact" className="btn btn--gold">{h.sourcingCta} <Arrow /></Link>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* ---- Custom Sourcing CTA ---- */}
+      <GlassCTA image={c.img.drilling2} title={h.sourcingTitle} copy={h.sourcingCopy}>
+        <Link to="/contact" className="btn btn--gold">{h.sourcingCta} <Arrow /></Link>
+      </GlassCTA>
 
       {/* ---- Serving Leading Companies ---- */}
       <section className="section">
@@ -180,18 +167,10 @@ export default function Home() {
       </section>
 
       {/* ---- Final CTA ---- */}
-      <section className="section">
-        <div className="container">
-          <Reveal><h2 className="h-cta" style={{ maxWidth: 1000 }}>{h.finalTitle}</h2></Reveal>
-          <Reveal delay={0.05}><p className="body" style={{ marginTop: 22, fontSize: '1.1rem' }}>{h.finalCopy}</p></Reveal>
-          <Reveal delay={0.1}>
-            <div className="hero-cta" style={{ marginTop: 34 }}>
-              <Link to="/contact" className="btn btn--gold">{h.finalCtaQuote} <Arrow /></Link>
-              <Link to="/contact" className="btn">{h.finalCtaContact} <Arrow /></Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <GlassCTA image={c.aboutImage} title={h.finalTitle} copy={h.finalCopy}>
+        <Link to="/contact" className="btn btn--gold">{h.finalCtaQuote} <Arrow /></Link>
+        <Link to="/contact" className="btn">{h.finalCtaContact} <Arrow /></Link>
+      </GlassCTA>
     </>
   )
 }

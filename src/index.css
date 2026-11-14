@@ -978,7 +978,12 @@ main, footer { position: relative; z-index: 1; }
 .sourcing__glass > * { position: relative; }
 .sourcing__glass .s-head { color: #fff; }
 .sourcing__copy { margin: 16px 0 0; color: rgba(255, 255, 255, 0.9); font-size: 1.0625rem; line-height: 1.65; }
-.sourcing__glass .btn { margin-top: 28px; white-space: nowrap; }
+.sourcing__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.sourcing__glass .btn { white-space: nowrap; }
+/* secondary button on the glass: light outline instead of the page's dark one */
+.sourcing__glass .btn:not(.btn--gold) { color: #fff; border-color: rgba(255, 255, 255, 0.55); background: rgba(255, 255, 255, 0.08); }
+.sourcing__glass .btn:not(.btn--gold):hover { color: #fff; border-color: #fff; background: rgba(255, 255, 255, 0.18); }
+.sourcing__actions .btn { width: auto; min-width: 210px; }
 /* browsers without backdrop-filter: fall back to a darker solid pane so text stays readable */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .sourcing__glass { background: rgba(20, 20, 20, 0.78); }
@@ -1039,7 +1044,8 @@ form select {
   .svcgrid { grid-template-columns: 1fr; }
   .sourcing__stage { min-height: 420px; align-items: flex-end; }
   .sourcing__glass { border-radius: 22px; }
-  .sourcing__glass .btn { width: 100%; }
+  .sourcing__glass .btn { width: 100%; min-width: 0; white-space: normal; }
+  .sourcing__stage { padding: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

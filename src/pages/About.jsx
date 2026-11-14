@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import Arrow from '../components/Arrow'
+import GlassCTA from '../components/GlassCTA'
 import CheckBadge from '../components/CheckBadge'
 import { useI18n, Highlight } from '../i18n'
 
@@ -120,14 +121,9 @@ export default function About() {
       </section>
 
       {/* Closing */}
-      <section className="section">
-        <div className="container">
-          <Reveal><h2 className="h-cta" style={{ maxWidth: 900 }}>{a.closing}</h2></Reveal>
-          <Reveal delay={0.05}>
-            <Link to="/contact" className="btn btn--gold" style={{ marginTop: 32 }}>{a.closingCta} <Arrow /></Link>
-          </Reveal>
-        </div>
-      </section>
+      <GlassCTA image={c.heroPoster} title={a.closing}>
+        <Link to="/contact" className="btn btn--gold">{a.closingCta} <Arrow /></Link>
+      </GlassCTA>
     </>
   )
 }
