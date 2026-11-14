@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import Arrow from '../components/Arrow'
+import PartnerCards from '../components/PartnerCards'
 import GlassCTA from '../components/GlassCTA'
-import CheckBadge from '../components/CheckBadge'
 import { useI18n, Highlight } from '../i18n'
 
 export default function About() {
@@ -102,20 +102,7 @@ export default function About() {
         <div className="container">
           <Reveal><span className="eyebrow" style={{ marginBottom: 24 }}>{a.partnersLabel}</span></Reveal>
           <Reveal delay={0.05}><p className="statement" style={{ marginBottom: 40 }}>{a.partnersIntro}</p></Reveal>
-          <div className="partner-grid">
-            {a.partners.map((p, i) => (
-              <Reveal key={p.name} delay={0.05 + i * 0.06}>
-                <div className="partner-card">
-                  <div className="partner-card__head">
-                    <img className="partner-card__logo" src={p.logo} alt={p.name} loading="lazy" />
-                    <span className="partner-card__badge"><CheckBadge /> {p.status}</span>
-                  </div>
-                  <p className="body" style={{ maxWidth: 'none', marginTop: 20 }}>{p.body}</p>
-                  {p.to && <Link to={p.to} className="ocard__more partner-card__more">{c.ui.learnMore} <Arrow size={16} /></Link>}
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <PartnerCards items={a.partners} />
           <Reveal delay={0.12}><p className="body" style={{ marginTop: 28 }}>{a.partnersNote}</p></Reveal>
         </div>
       </section>
