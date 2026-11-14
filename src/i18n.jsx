@@ -197,18 +197,10 @@ const S = {
       ],
       categories: [
         {
-          id: 'normet-equipment', n: '01', short: 'Underground Equipment', card: 'Normet machines for concrete spraying and transport, explosives charging, scaling, lifting and logistics.', title: 'Underground Mining & Tunnelling Equipment', image: assets.img.normetEquipment, list: true,
-          para: 'Purpose-built Normet machines for every stage of the underground process, available with diesel or Normet SmartDrive battery-electric drivelines.',
+          id: 'normet-equipment', n: '01', short: 'Underground Equipment', card: 'Normet machines for concrete spraying and transport, explosives charging, scaling, lifting and logistics.', title: 'Underground Mining & Tunnelling Equipment', image: assets.img.normetEquipment,
+          para: 'Purpose-built Normet machines for every stage of underground work.',
           subLabel: 'Equipment range',
-          sub: [
-            'Concrete Spraying — Spraymec sprayers',
-            'Concrete Transport — Utimec transmixers',
-            'Explosives Charging — Charmec chargers for emulsion and ANFO',
-            'Scaling — Scamec mechanized scalers',
-            'Lifting & Installation — Himec and Utilift scissor and basket lifts',
-            'Underground Logistics — Variomec and Multimec personnel, material and service carriers',
-          ],
-          note: 'Models and configurations are specified to your application on request.',
+          sub: ['Concrete Spraying', 'Concrete Transport', 'Explosives Charging', 'Scaling', 'Lifting & Installation', 'Logistics'],
         },
         {
           id: 'normet-rock-breaking', n: '02', short: 'Hydraulic Breakers & Rock Breaking', card: 'Normet Xrock hydraulic breakers, breaker boom systems, pedestal booms and automation.', title: 'Hydraulic Breakers & Rock-Breaking Solutions', image: assets.img.normetXrock,
@@ -447,18 +439,10 @@ const S = {
       ],
       categories: [
         {
-          id: 'normet-equipment', n: '01', short: 'المعدّات تحت الأرض', card: 'آليات Normet لرشّ الخرسانة ونقلها وشحن المتفجّرات وإزالة الصخور المفكّكة والرفع والنقل.', title: 'معدّات التعدين والأنفاق تحت الأرض', image: assets.img.normetEquipment, list: true,
-          para: 'آليات Normet مصمّمة خصيصًا لكل مرحلة من مراحل العمل تحت الأرض، متوفّرة بمحرّكات ديزل أو بمنظومة الدفع الكهربائية بالبطاريات Normet SmartDrive.',
+          id: 'normet-equipment', n: '01', short: 'المعدّات تحت الأرض', card: 'آليات Normet لرشّ الخرسانة ونقلها وشحن المتفجّرات وإزالة الصخور المفكّكة والرفع والنقل.', title: 'معدّات التعدين والأنفاق تحت الأرض', image: assets.img.normetEquipment,
+          para: 'آليات Normet مصمّمة لكل مرحلة من مراحل العمل تحت الأرض.',
           subLabel: 'مجموعة المعدّات',
-          sub: [
-            'رشّ الخرسانة — آليات الرشّ Spraymec',
-            'نقل الخرسانة — خلّاطات النقل Utimec',
-            'شحن المتفجّرات — آليات Charmec للمستحلبات وANFO',
-            'إزالة الصخور المفكّكة — آليات Scamec',
-            'الرفع والتركيب — منصّات Himec وUtilift المقصّية والسلّية',
-            'النقل والإمداد تحت الأرض — ناقلات Variomec وMultimec للأفراد والمواد والخدمات',
-          ],
-          note: 'تُحدَّد الموديلات والتجهيزات بحسب تطبيقك عند الطلب.',
+          sub: ['رشّ الخرسانة', 'نقل الخرسانة', 'شحن المتفجّرات', 'إزالة الصخور المفكّكة', 'الرفع والتركيب', 'النقل والإمداد'],
         },
         {
           id: 'normet-rock-breaking', n: '02', short: 'المطارق الهيدروليكية وتكسير الصخور', card: 'المطارق الهيدروليكية Normet Xrock وأنظمة أذرع التكسير والأذرع الثابتة وحلول الأتمتة.', title: 'المطارق الهيدروليكية وحلول تكسير الصخور', image: assets.img.normetXrock,
