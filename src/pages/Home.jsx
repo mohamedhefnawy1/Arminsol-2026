@@ -146,18 +146,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---- Custom Sourcing CTA ---- */}
+      {/* ---- Custom Sourcing CTA — copy sits on a glass panel over a product photo ---- */}
       <section className="section">
         <div className="container">
           <Reveal>
-            <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+            <div className="sourcing">
               <div className="strata"><span /><span /><span /><span /><span /><span /></div>
-              <div className="split" style={{ display: 'grid', gridTemplateColumns: '1.3fr 0.7fr', gap: 40, alignItems: 'center', padding: 'clamp(32px, 5vw, 52px)' }}>
-                <div>
+              <div className="sourcing__stage">
+                <img className="sourcing__img" src={c.img.drilling2} alt="" loading="lazy" />
+                <div className="sourcing__glass">
                   <h2 className="s-head">{h.sourcingTitle}</h2>
-                  <p className="body" style={{ marginTop: 16 }}>{h.sourcingCopy}</p>
-                </div>
-                <div className="sourcing-cta">
+                  <p className="sourcing__copy">{h.sourcingCopy}</p>
                   <Link to="/contact" className="btn btn--gold">{h.sourcingCta} <Arrow /></Link>
                 </div>
               </div>

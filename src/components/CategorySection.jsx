@@ -3,7 +3,7 @@ import Reveal from './Reveal'
 import Arrow from './Arrow'
 
 /** Alternating image / text block used for product categories (Products, Normet). */
-export default function CategorySection({ cat, imageFirst }) {
+export default function CategorySection({ cat, imageFirst, quoteLabel }) {
   const image = (
     <Reveal delay={0.05} className="catsplit__media">
       <img src={cat.image} alt={cat.title} className="card" style={{ width: '100%', aspectRatio: '4 / 3', objectFit: 'cover' }} loading="lazy" />
@@ -27,9 +27,10 @@ export default function CategorySection({ cat, imageFirst }) {
         )}
       </Reveal>
       {cat.note && <Reveal delay={0.14}><p className="mono" style={{ marginTop: 20, fontSize: 12.5, color: 'var(--faint)' }}>{cat.note}</p></Reveal>}
-      {cat.cta && (
+      {quoteLabel && (
         <Reveal delay={0.16}>
-          <Link to={cat.cta.to} className="btn" style={{ marginTop: 26 }}>{cat.cta.label} <Arrow /></Link>
+          {/* opens the inquiry form with this category already filled in */}
+          <Link to={`/contact?product=${cat.id}`} className="btn btn--gold" style={{ marginTop: 28 }}>{quoteLabel} <Arrow /></Link>
         </Reveal>
       )}
     </div>

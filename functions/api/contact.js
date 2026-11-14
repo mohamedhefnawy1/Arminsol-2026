@@ -28,6 +28,7 @@ export async function onRequestPost({ request, env }) {
   const company = (form.get('company') || '').toString().trim()
   const phone = (form.get('phone') || '').toString().trim()
   const inquiry = (form.get('inquiry') || '').toString().trim()
+  const product = (form.get('product') || '').toString().trim()
   const message = (form.get('message') || '').toString().trim()
 
   if (!name || !email || !message || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
@@ -55,7 +56,7 @@ export async function onRequestPost({ request, env }) {
 
   const rows = [
     ['Name', name], ['Company', company], ['Email', email], ['Phone', phone],
-    ['Inquiry type', inquiry],
+    ['Inquiry type', inquiry], ['Product', product],
   ].filter(([, v]) => v)
   const html = `
     <h2 style="margin:0 0 12px;font-family:Arial,sans-serif">New website inquiry</h2>

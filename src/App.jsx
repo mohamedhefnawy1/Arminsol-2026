@@ -17,14 +17,18 @@ function ScrollToTop() {
   const { pathname, hash } = useLocation()
   useEffect(() => {
     if (hash) {
-      // let the target route render, then scroll to the anchor
+      // The outgoing page animates out before the target page mounts, so the anchor
+      // may not exist yet — keep looking for it for a few seconds, then scroll once.
       const id = decodeURIComponent(hash.slice(1))
+      let tries = 0
+      let timer
       const scroll = () => {
         const el = document.getElementById(id)
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); return }
+        if (++tries < 40) timer = setTimeout(scroll, 100)
       }
-      const r = requestAnimationFrame(() => setTimeout(scroll, 60))
-      return () => cancelAnimationFrame(r)
+      timer = setTimeout(scroll, 60)
+      return () => clearTimeout(timer)
     }
     window.scrollTo(0, 0)
   }, [pathname, hash])

@@ -69,7 +69,7 @@ export default function Normet() {
 
       {/* Offering — alternating image / text */}
       {n.categories.map((cat, i) => (
-        <CategorySection key={cat.id} cat={cat} imageFirst={i % 2 === 0} />
+        <CategorySection key={cat.id} cat={cat} imageFirst={i % 2 === 0} quoteLabel={c.ui.requestQuote} />
       ))}
 
       {/* Applications */}

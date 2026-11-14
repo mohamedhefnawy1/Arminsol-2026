@@ -801,6 +801,8 @@ main, footer { position: relative; z-index: 1; }
   scrollbar-width: none;
 }
 .catnav__inner::-webkit-scrollbar { display: none; }
+/* once the row no longer fits and scrolls, give the entries more room */
+@media (max-width: 1370px) { .catnav__inner { gap: 44px; } }
 .catnav a {
   font-family: var(--font-mono);
   font-size: 13px;
@@ -895,7 +897,7 @@ main, footer { position: relative; z-index: 1; }
 /* what-we-offer grid — 4 cards, first spans the row as a feature */
 /* feature card + eight cards: two rows of four on wide screens, pairs below that */
 .offergrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 44px 28px; align-items: start; }
-.offergrid__feature { grid-column: 1 / -1; }
+.offergrid__feature { grid-column: 1 / -1; margin-bottom: 36px; }
 .offergrid__feature .ocard { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: center; }
 .offergrid__feature .ocard__media { aspect-ratio: 16 / 9; margin: 0; }
 .offergrid__feature .ocard__body { display: flex; flex-direction: column; }
@@ -946,8 +948,46 @@ main, footer { position: relative; z-index: 1; }
 /* three official partners side by side; stacks on smaller screens */
 .partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
-/* sourcing CTA button alignment */
-.sourcing-cta { display: flex; justify-content: flex-end; }
+/* sourcing CTA (Home) — product photo with the copy on a "liquid glass" panel:
+   a frosted, light-catching pane that blurs and saturates the photo behind it */
+.sourcing { border-radius: 8px; overflow: hidden; background: var(--card); }
+.sourcing__stage { position: relative; display: flex; align-items: center; min-height: 460px; padding: clamp(20px, 5vw, 56px); isolation: isolate; }
+.sourcing__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.sourcing__stage::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg, rgba(8, 8, 8, 0.55) 0%, rgba(8, 8, 8, 0.25) 55%, rgba(8, 8, 8, 0.05) 100%); }
+[dir='rtl'] .sourcing__stage::before { background: linear-gradient(260deg, rgba(8, 8, 8, 0.55) 0%, rgba(8, 8, 8, 0.25) 55%, rgba(8, 8, 8, 0.05) 100%); }
+.sourcing__glass {
+  position: relative;
+  width: min(100%, 560px);
+  padding: clamp(26px, 4vw, 44px);
+  border-radius: 28px;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.08) 45%, rgba(255, 255, 255, 0.14) 100%), rgba(20, 20, 20, 0.28);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 0 26px rgba(255, 255, 255, 0.07),
+    0 24px 60px rgba(0, 0, 0, 0.38);
+  overflow: hidden;
+}
+/* specular sheen across the top-left corner */
+.sourcing__glass::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 70% at 0% 0%, rgba(255, 255, 255, 0.32), transparent 60%); }
+[dir='rtl'] .sourcing__glass::before { background: radial-gradient(120% 70% at 100% 0%, rgba(255, 255, 255, 0.32), transparent 60%); }
+.sourcing__glass > * { position: relative; }
+.sourcing__glass .s-head { color: #fff; }
+.sourcing__copy { margin: 16px 0 0; color: rgba(255, 255, 255, 0.9); font-size: 1.0625rem; line-height: 1.65; }
+.sourcing__glass .btn { margin-top: 28px; white-space: nowrap; }
+/* browsers without backdrop-filter: fall back to a darker solid pane so text stays readable */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .sourcing__glass { background: rgba(20, 20, 20, 0.78); }
+}
+
+/* selected product banner on the inquiry form */
+.rfqnote { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; border: 1px solid var(--line-strong); border-inline-start: 3px solid var(--accent); border-radius: 8px; padding: 14px 16px; background: var(--card); }
+.rfqnote .mono { font-size: 12.5px; color: var(--muted); }
+.rfqnote strong { font-weight: 500; }
 
 /* contact page */
 .contact-rows { margin-top: 22px; }
@@ -987,16 +1027,19 @@ form select {
   .footer-grid { grid-template-columns: 1fr; gap: 36px; padding: 48px 0 36px; }
   .wa-fab { width: 48px; height: 48px; inset-inline-end: 16px; bottom: 16px; }
   .statement { font-size: 1.2rem; }
-  .catnav__inner { gap: 20px; }
+  .catnav__inner { gap: 36px; }
   .diststrip { grid-template-columns: 1fr; }
   .diststrip__item { flex-direction: column; align-items: flex-start; gap: 14px; }
   .offergrid { grid-template-columns: 1fr; gap: 36px; }
+  .offergrid__feature { margin-bottom: 0; }
   .offergrid__feature .ocard { grid-template-columns: 1fr; gap: 18px; }
   .offergrid__feature .ocard__title { font-size: 1.4rem; }
   .indgrid { grid-template-columns: repeat(2, 1fr); }
   .facts { grid-template-columns: repeat(2, 1fr); }
   .svcgrid { grid-template-columns: 1fr; }
-  .sourcing-cta { justify-content: flex-start; }
+  .sourcing__stage { min-height: 420px; align-items: flex-end; }
+  .sourcing__glass { border-radius: 22px; }
+  .sourcing__glass .btn { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -53,7 +53,7 @@ export default function Products() {
 
       {/* Categories — alternating image / text */}
       {categories.map((cat, i) => (
-        <CategorySection key={cat.id} cat={{ ...cat, n: String(i + 1).padStart(2, '0') }} imageFirst={i % 2 === 0} />
+        <CategorySection key={cat.id} cat={{ ...cat, n: String(i + 1).padStart(2, '0') }} imageFirst={i % 2 === 0} quoteLabel={c.ui.requestQuote} />
       ))}
 
       {/* Custom Sourcing CTA */}
