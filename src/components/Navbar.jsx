@@ -23,6 +23,8 @@ export default function Navbar() {
   const location = useLocation()
   const { theme, toggle } = useTheme()
   const { c, toggleLang } = useI18n()
+  const links = c.nav.filter((item) => item.to !== '/contact')
+  const cta = c.nav.find((item) => item.to === '/contact')
   const rawProgress = useMotionValue(0)
   const progress = useSpring(rawProgress, { stiffness: 220, damping: 40, restDelta: 0.0005 })
 
@@ -62,15 +64,13 @@ export default function Navbar() {
         <Logo flame={c.flame} />
 
         <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
-          {c.nav.map((item) => (
+          {links.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               end={item.to === '/'}
-              className={item.to === '/contact' ? 'nav-cta' : 'nav-link'}
-              style={({ isActive }) => (item.to === '/contact'
-                ? { fontSize: 15, letterSpacing: '-0.02em' }
-                : { fontSize: 16, letterSpacing: '-0.025em', color: isActive ? 'var(--text)' : 'var(--muted)', transition: 'color .3s var(--ease)' })}
+              className="nav-link"
+              style={({ isActive }) => ({ fontSize: 16, letterSpacing: '-0.025em', color: isActive ? 'var(--text)' : 'var(--muted)', transition: 'color .3s var(--ease)' })}
             >
               {item.label}
             </NavLink>
@@ -82,6 +82,8 @@ export default function Navbar() {
             </button>
             <button className="pill pill--ghost" onClick={toggleLang} aria-label="Switch language"><Globe /> {c.langName}</button>
           </div>
+          {/* Contact stays the one prominent action, pinned to the end of the bar */}
+          {cta && <Link to={cta.to} className="nav-cta" style={{ fontSize: 15, letterSpacing: '-0.02em' }}>{cta.label}</Link>}
         </div>
 
         <button
@@ -147,11 +149,12 @@ export default function Navbar() {
       document.body)}
 
       <style>{`
-        @media (max-width: 860px) {
+        /* four links + pills + Contact button need ~1150px before they crowd the logo */
+        @media (max-width: 1150px) {
           .nav-links { display: none !important; }
           .nav-burger { display: inline-flex !important; }
         }
-        @media (min-width: 861px) { .mobile-overlay { display: none !important; } }
+        @media (min-width: 1151px) { .mobile-overlay { display: none !important; } }
         .nav-link:hover { color: var(--text) !important; }
         .mobile-link:hover { color: var(--text) !important; }
       `}</style>

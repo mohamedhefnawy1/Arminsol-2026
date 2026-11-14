@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Reveal from '../components/Reveal'
 import Arrow from '../components/Arrow'
@@ -33,6 +34,12 @@ export default function Contact() {
   const formRef = useRef(null)
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
   const [fileName, setFileName] = useState('')
+
+  // Arriving from a "Send RFQ" / "Request a Quote" button (/contact?inquiry=rfq):
+  // pre-select the Request for Quotation inquiry type. Nothing else is filled in.
+  const [params] = useSearchParams()
+  const isRfq = params.get('inquiry') === 'rfq'
+  const rfqOption = f.inquiryOptions[1]
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -70,7 +77,7 @@ export default function Contact() {
                 <button className="btn btn--center" style={{ marginTop: 22, marginInline: 'auto' }} onClick={() => setStatus('idle')}>{t.sendAnother}</button>
               </motion.div>
             ) : (
-              <form ref={formRef} onSubmit={onSubmit} style={{ display: 'grid', gap: 16 }}>
+              <form key={`${c.lang}-${isRfq ? 'rfq' : 'blank'}`} ref={formRef} onSubmit={onSubmit} style={{ display: 'grid', gap: 16 }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="split">
                   <input name="name" style={field} placeholder={f.name} aria-label={f.name} required autoComplete="name" />
                   <input name="company" style={field} placeholder={f.company} aria-label={f.company} autoComplete="organization" />
@@ -79,7 +86,7 @@ export default function Contact() {
                   <input name="email" style={field} type="email" placeholder={f.email} aria-label={f.email} required autoComplete="email" />
                   <input name="phone" style={field} type="tel" placeholder={f.phone} aria-label={f.phone} autoComplete="tel" />
                 </div>
-                <select name="inquiry" style={{ ...field, appearance: 'none', cursor: 'pointer' }} aria-label={f.inquiry} defaultValue="" required>
+                <select name="inquiry" style={{ ...field, appearance: 'none', cursor: 'pointer' }} aria-label={f.inquiry} defaultValue={isRfq ? rfqOption : ''} required>
                   <option value="" disabled>{f.inquiry}</option>
                   {f.inquiryOptions.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
                 </select>

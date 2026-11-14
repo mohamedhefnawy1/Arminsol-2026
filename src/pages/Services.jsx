@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import Arrow from '../components/Arrow'
+import GlassCTA from '../components/GlassCTA'
 import { useI18n } from '../i18n'
 
 const ico = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round', width: 34, height: 34, viewBox: '0 0 24 24', 'aria-hidden': true }
@@ -65,14 +66,9 @@ export default function Services() {
       </section>
 
       {/* Final CTA */}
-      <section className="section" style={{ borderTop: '1px solid var(--line)' }}>
-        <div className="container">
-          <Reveal><h2 className="h-cta" style={{ maxWidth: 900 }}>{s.finalTitle}</h2></Reveal>
-          <Reveal delay={0.05}>
-            <Link to="/contact" className="btn btn--gold" style={{ marginTop: 32 }}>{s.finalCta} <Arrow /></Link>
-          </Reveal>
-        </div>
-      </section>
+      <GlassCTA image={c.img.tires} title={s.finalTitle}>
+        <Link to="/contact" className="btn btn--gold">{s.finalCta} <Arrow /></Link>
+      </GlassCTA>
     </>
   )
 }

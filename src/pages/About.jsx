@@ -1,15 +1,9 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import Arrow from '../components/Arrow'
+import GlassCTA from '../components/GlassCTA'
+import CheckBadge from '../components/CheckBadge'
 import { useI18n, Highlight } from '../i18n'
-
-function CheckBadge() {
-  return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M5 12.5l4.5 4.5L19 6.5" />
-    </svg>
-  )
-}
 
 export default function About() {
   const { c } = useI18n()
@@ -108,7 +102,7 @@ export default function About() {
         <div className="container">
           <Reveal><span className="eyebrow" style={{ marginBottom: 24 }}>{a.partnersLabel}</span></Reveal>
           <Reveal delay={0.05}><p className="statement" style={{ marginBottom: 40 }}>{a.partnersIntro}</p></Reveal>
-          <div className="split" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+          <div className="partner-grid">
             {a.partners.map((p, i) => (
               <Reveal key={p.name} delay={0.05 + i * 0.06}>
                 <div className="partner-card">
@@ -117,6 +111,7 @@ export default function About() {
                     <span className="partner-card__badge"><CheckBadge /> {p.status}</span>
                   </div>
                   <p className="body" style={{ maxWidth: 'none', marginTop: 20 }}>{p.body}</p>
+                  {p.to && <Link to={p.to} className="ocard__more partner-card__more">{c.ui.learnMore} <Arrow size={16} /></Link>}
                 </div>
               </Reveal>
             ))}
@@ -126,14 +121,9 @@ export default function About() {
       </section>
 
       {/* Closing */}
-      <section className="section">
-        <div className="container">
-          <Reveal><h2 className="h-cta" style={{ maxWidth: 900 }}>{a.closing}</h2></Reveal>
-          <Reveal delay={0.05}>
-            <Link to="/contact" className="btn btn--gold" style={{ marginTop: 32 }}>{a.closingCta} <Arrow /></Link>
-          </Reveal>
-        </div>
-      </section>
+      <GlassCTA image={c.heroPoster} title={a.closing}>
+        <Link to="/contact" className="btn btn--gold">{a.closingCta} <Arrow /></Link>
+      </GlassCTA>
     </>
   )
 }

@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import Arrow from '../components/Arrow'
+import GlassCTA from '../components/GlassCTA'
+import CheckBadge from '../components/CheckBadge'
 import { useI18n } from '../i18n'
 
 function SpeakerOff() {
@@ -21,18 +23,18 @@ function SpeakerOn() {
   )
 }
 
-function CheckBadge() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M5 12.5l4.5 4.5L19 6.5" />
-    </svg>
-  )
-}
-
 export default function Home() {
   const { c } = useI18n()
   const h = c.home
   const reel = [...h.servingList, ...h.servingList]
+  // One list for "What We Offer": Arminsol's own categories, then the Normet lines.
+  // Normet parts & services are covered by the Spare Parts card, so they are not repeated.
+  const offers = [
+    ...h.offers,
+    ...c.normet.categories
+      .filter((cat) => cat.id !== 'normet-parts-services')
+      .map((cat) => ({ title: cat.short, desc: cat.card, image: cat.image, to: `/products#${cat.id}` })),
+  ]
   const videoRef = useRef(null)
   const [soundOn, setSoundOn] = useState(false)
   useEffect(() => { if (videoRef.current) videoRef.current.muted = true }, [])
@@ -100,7 +102,7 @@ export default function Home() {
                 <div className="diststrip__item" key={d.name}>
                   <img className="diststrip__logo" src={d.logo} alt={d.name} loading="lazy" />
                   <div>
-                    <span className="diststrip__badge"><CheckBadge /> {c.ui.officialDistributor}</span>
+                    <span className="diststrip__badge"><CheckBadge size={16} /> {d.badge || c.ui.officialDistributor}</span>
                     <div className="diststrip__status">{d.status}</div>
                   </div>
                 </div>
@@ -115,7 +117,7 @@ export default function Home() {
         <div className="container">
           <Reveal><span className="eyebrow" style={{ marginBottom: 40 }}>{h.offerLabel}</span></Reveal>
           <div className="offergrid">
-            {h.offers.map((o, i) => (
+            {offers.map((o, i) => (
               <Reveal key={o.title} delay={(i % 4) * 0.06} className={o.feature ? 'offergrid__feature' : undefined}>
                 <Link to={o.to} className="ocard">
                   <img className="ocard__media" src={o.image} alt={o.title} loading="lazy" />
@@ -157,7 +159,7 @@ export default function Home() {
                   <p className="body" style={{ marginTop: 16 }}>{h.sourcingCopy}</p>
                 </div>
                 <div className="sourcing-cta">
-                  <Link to="/contact" className="btn btn--gold">{h.sourcingCta} <Arrow /></Link>
+                  <Link to="/contact?inquiry=rfq" className="btn btn--gold">{h.sourcingCta} <Arrow /></Link>
                 </div>
               </div>
             </div>
@@ -180,18 +182,10 @@ export default function Home() {
       </section>
 
       {/* ---- Final CTA ---- */}
-      <section className="section">
-        <div className="container">
-          <Reveal><h2 className="h-cta" style={{ maxWidth: 1000 }}>{h.finalTitle}</h2></Reveal>
-          <Reveal delay={0.05}><p className="body" style={{ marginTop: 22, fontSize: '1.1rem' }}>{h.finalCopy}</p></Reveal>
-          <Reveal delay={0.1}>
-            <div className="hero-cta" style={{ marginTop: 34 }}>
-              <Link to="/contact" className="btn btn--gold">{h.finalCtaQuote} <Arrow /></Link>
-              <Link to="/contact" className="btn">{h.finalCtaContact} <Arrow /></Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <GlassCTA image={c.aboutImage} title={h.finalTitle} copy={h.finalCopy}>
+        <Link to="/contact?inquiry=rfq" className="btn btn--gold">{h.finalCtaQuote} <Arrow /></Link>
+        <Link to="/contact" className="btn">{h.finalCtaContact} <Arrow /></Link>
+      </GlassCTA>
     </>
   )
 }
