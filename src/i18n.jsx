@@ -27,6 +27,8 @@ const assets = {
   aramineLogo: '/logos/aramine.png',
   technidrillLogo: '/logos/technidrill.png',
   normetLogo: '/logos/normet.svg',
+  aramineUrl: 'https://aramine.com/',
+  technidrillUrl: 'https://technidrill.com/',
   // mineral spectrum from the logo — gold, silver, copper, bauxite, phosphates, lime
   logoSwatch: ['var(--c-gold)', 'var(--c-silver)', 'var(--c-copper)', 'var(--c-bauxite)', 'var(--c-phosphates)', 'var(--c-lime)'],
 }
@@ -75,11 +77,6 @@ const S = {
       heroCtaPrimary: 'Explore Our Products',
       heroCtaSecondary: 'Contact Us',
       distributorLabel: 'Official Distributor in Saudi Arabia',
-      distributors: [
-        { name: 'Aramine', logo: assets.aramineLogo, status: 'Official Distributor of Aramine in Saudi Arabia' },
-        { name: 'Technidrill', logo: assets.technidrillLogo, status: 'Official Distributor of Technidrill in Saudi Arabia' },
-        { name: 'Normet', logo: assets.normetLogo, badge: 'Official Agent & Distributor in Saudi Arabia', status: 'Official Agent & Distributor of Normet in Saudi Arabia' },
-      ],
       offerLabel: 'What We Offer',
       offers: [
         { title: 'Drilling & Exploration', desc: 'Diamond, RC, DTH and top-hammer drilling tools and consumables.', image: assets.img.drilling, to: '/products#drilling', feature: true },
@@ -125,8 +122,8 @@ const S = {
       partnersLabel: 'Official Distribution Partnerships',
       partnersIntro: 'Arminsol is the official partner in Saudi Arabia for three leading manufacturers.',
       partners: [
-        { name: 'Aramine', logo: assets.aramineLogo, status: 'Official Distributor in Saudi Arabia', body: 'As the official distributor of Aramine in Saudi Arabia, Arminsol supplies underground mining equipment, genuine spare parts and the SmartParts range — giving local operators direct access to original components and factory-backed support.' },
-        { name: 'Technidrill', logo: assets.technidrillLogo, status: 'Official Distributor in Saudi Arabia', body: 'As the official distributor of Technidrill in Saudi Arabia, Arminsol provides premium exploration and drilling products, backed by manufacturer expertise and dependable local supply.' },
+        { name: 'Aramine', logo: assets.aramineLogo, href: assets.aramineUrl, status: 'Official Distributor in Saudi Arabia', body: 'As the official distributor of Aramine in Saudi Arabia, Arminsol supplies underground mining equipment, genuine spare parts and the SmartParts range — giving local operators direct access to original components and factory-backed support.' },
+        { name: 'Technidrill', logo: assets.technidrillLogo, href: assets.technidrillUrl, status: 'Official Distributor in Saudi Arabia', body: 'As the official distributor of Technidrill in Saudi Arabia, Arminsol provides premium exploration and drilling products, backed by manufacturer expertise and dependable local supply.' },
         { name: 'Normet', logo: assets.normetLogo, status: 'Official Agent & Distributor in Saudi Arabia', to: '/products/normet', body: 'Under our Agency and Distributor Agreements with Normet, Arminsol supplies the full Normet range in Saudi Arabia — underground mining and tunnelling equipment, Normet Xrock hydraulic breakers and rock-breaking solutions, Aliva equipment, genuine spare parts and related services.' },
       ],
       partnersNote: 'These official relationships strengthen our ability to support mining customers with genuine products, technical backing and reliable lead times.',
@@ -149,8 +146,8 @@ const S = {
       ],
       distributorsLabel: 'Official Distribution Partners',
       distributors: [
-        { name: 'Aramine', logo: assets.aramineLogo, status: 'Official Distributor in Saudi Arabia', desc: 'Underground mining equipment, genuine spare parts and the SmartParts range.' },
-        { name: 'Technidrill', logo: assets.technidrillLogo, status: 'Official Distributor in Saudi Arabia', desc: 'Premium exploration and drilling products, backed by manufacturer expertise.' },
+        { name: 'Aramine', logo: assets.aramineLogo, href: assets.aramineUrl, status: 'Official Distributor in Saudi Arabia', desc: 'Underground mining equipment, genuine spare parts and the SmartParts range.' },
+        { name: 'Technidrill', logo: assets.technidrillLogo, href: assets.technidrillUrl, status: 'Official Distributor in Saudi Arabia', desc: 'Premium exploration and drilling products, backed by manufacturer expertise.' },
         { name: 'Normet', logo: assets.normetLogo, status: 'Official Agent & Distributor in Saudi Arabia', desc: 'Underground equipment, Xrock rock-breaking solutions, Aliva equipment, spare parts and services.', to: '/products/normet' },
       ],
       categories: [
@@ -200,18 +197,10 @@ const S = {
       ],
       categories: [
         {
-          id: 'normet-equipment', n: '01', short: 'Underground Equipment', card: 'Normet machines for concrete spraying and transport, explosives charging, scaling, lifting and logistics.', title: 'Underground Mining & Tunnelling Equipment', image: assets.img.normetEquipment, list: true,
-          para: 'Purpose-built Normet machines for every stage of the underground process, available with diesel or Normet SmartDrive battery-electric drivelines.',
+          id: 'normet-equipment', n: '01', short: 'Underground Equipment', card: 'Normet machines for concrete spraying and transport, explosives charging, scaling, lifting and logistics.', title: 'Underground Mining & Tunnelling Equipment', image: assets.img.normetEquipment,
+          para: 'Purpose-built Normet machines for every stage of underground work.',
           subLabel: 'Equipment range',
-          sub: [
-            'Concrete Spraying — Spraymec sprayers',
-            'Concrete Transport — Utimec transmixers',
-            'Explosives Charging — Charmec chargers for emulsion and ANFO',
-            'Scaling — Scamec mechanized scalers',
-            'Lifting & Installation — Himec and Utilift scissor and basket lifts',
-            'Underground Logistics — Variomec and Multimec personnel, material and service carriers',
-          ],
-          note: 'Models and configurations are specified to your application on request.',
+          sub: ['Concrete Spraying', 'Concrete Transport', 'Explosives Charging', 'Scaling', 'Lifting & Installation', 'Logistics'],
         },
         {
           id: 'normet-rock-breaking', n: '02', short: 'Hydraulic Breakers & Rock Breaking', card: 'Normet Xrock hydraulic breakers, breaker boom systems, pedestal booms and automation.', title: 'Hydraulic Breakers & Rock-Breaking Solutions', image: assets.img.normetXrock,
@@ -330,11 +319,6 @@ const S = {
       heroCtaPrimary: 'استكشف منتجاتنا',
       heroCtaSecondary: 'تواصل معنا',
       distributorLabel: 'الموزع الرسمي في المملكة العربية السعودية',
-      distributors: [
-        { name: 'Aramine', logo: assets.aramineLogo, status: 'الموزع الرسمي لشركة Aramine في المملكة العربية السعودية' },
-        { name: 'Technidrill', logo: assets.technidrillLogo, status: 'الموزع الرسمي لشركة Technidrill في المملكة العربية السعودية' },
-        { name: 'Normet', logo: assets.normetLogo, badge: 'الوكيل والموزع الرسمي في المملكة العربية السعودية', status: 'الوكيل والموزع الرسمي لشركة Normet في المملكة العربية السعودية' },
-      ],
       offerLabel: 'ما الذي نقدّمه',
       offers: [
         { title: 'الحفر والاستكشاف', desc: 'أدوات ومستهلكات الحفر الماسي وRC وDTH والمطرقة العلوية.', image: assets.img.drilling, to: '/products#drilling', feature: true },
@@ -380,8 +364,8 @@ const S = {
       partnersLabel: 'شراكات التوزيع الرسمية',
       partnersIntro: 'أرمينسول هي الشريك الرسمي في المملكة العربية السعودية لثلاث من كبرى الشركات المصنّعة.',
       partners: [
-        { name: 'Aramine', logo: assets.aramineLogo, status: 'الموزع الرسمي في المملكة العربية السعودية', body: 'بصفتها الموزّع الرسمي لـ Aramine في المملكة العربية السعودية، توفّر أرمينسول معدّات التعدين تحت الأرض وقطع الغيار الأصلية ومجموعة SmartParts — لتمنح المشغّلين المحلّيين وصولًا مباشرًا إلى المكوّنات الأصلية والدعم المعتمد من المصنّع.' },
-        { name: 'Technidrill', logo: assets.technidrillLogo, status: 'الموزع الرسمي في المملكة العربية السعودية', body: 'بصفتها الموزّع الرسمي لـ Technidrill في المملكة العربية السعودية، توفّر أرمينسول منتجات حفر واستكشاف متميّزة، مدعومة بخبرة المصنّع وتوريد محلّي موثوق.' },
+        { name: 'Aramine', logo: assets.aramineLogo, href: assets.aramineUrl, status: 'الموزع الرسمي في المملكة العربية السعودية', body: 'بصفتها الموزّع الرسمي لـ Aramine في المملكة العربية السعودية، توفّر أرمينسول معدّات التعدين تحت الأرض وقطع الغيار الأصلية ومجموعة SmartParts — لتمنح المشغّلين المحلّيين وصولًا مباشرًا إلى المكوّنات الأصلية والدعم المعتمد من المصنّع.' },
+        { name: 'Technidrill', logo: assets.technidrillLogo, href: assets.technidrillUrl, status: 'الموزع الرسمي في المملكة العربية السعودية', body: 'بصفتها الموزّع الرسمي لـ Technidrill في المملكة العربية السعودية، توفّر أرمينسول منتجات حفر واستكشاف متميّزة، مدعومة بخبرة المصنّع وتوريد محلّي موثوق.' },
         { name: 'Normet', logo: assets.normetLogo, status: 'الوكيل والموزع الرسمي في المملكة العربية السعودية', to: '/products/normet', body: 'بموجب اتفاقيتَي الوكالة والتوزيع مع Normet، توفّر أرمينسول المجموعة الكاملة من منتجات Normet في المملكة العربية السعودية — معدّات التعدين والأنفاق تحت الأرض، المطارق الهيدروليكية وحلول تكسير الصخور Normet Xrock، معدّات Aliva، وقطع الغيار الأصلية والخدمات المرتبطة بها.' },
       ],
       partnersNote: 'تعزّز هذه العلاقات الرسمية قدرتنا على دعم عملاء التعدين بمنتجات أصلية ودعم فني ومهل توريد موثوقة.',
@@ -404,8 +388,8 @@ const S = {
       ],
       distributorsLabel: 'شركاء التوزيع الرسميون',
       distributors: [
-        { name: 'Aramine', logo: assets.aramineLogo, status: 'الموزع الرسمي في المملكة العربية السعودية', desc: 'معدّات التعدين تحت الأرض وقطع الغيار الأصلية ومجموعة SmartParts.' },
-        { name: 'Technidrill', logo: assets.technidrillLogo, status: 'الموزع الرسمي في المملكة العربية السعودية', desc: 'منتجات حفر واستكشاف متميّزة مدعومة بخبرة المصنّع.' },
+        { name: 'Aramine', logo: assets.aramineLogo, href: assets.aramineUrl, status: 'الموزع الرسمي في المملكة العربية السعودية', desc: 'معدّات التعدين تحت الأرض وقطع الغيار الأصلية ومجموعة SmartParts.' },
+        { name: 'Technidrill', logo: assets.technidrillLogo, href: assets.technidrillUrl, status: 'الموزع الرسمي في المملكة العربية السعودية', desc: 'منتجات حفر واستكشاف متميّزة مدعومة بخبرة المصنّع.' },
         { name: 'Normet', logo: assets.normetLogo, status: 'الوكيل والموزع الرسمي في المملكة العربية السعودية', desc: 'معدّات تحت الأرض وحلول تكسير الصخور Xrock ومعدّات Aliva وقطع الغيار والخدمات.', to: '/products/normet' },
       ],
       categories: [
@@ -455,18 +439,10 @@ const S = {
       ],
       categories: [
         {
-          id: 'normet-equipment', n: '01', short: 'المعدّات تحت الأرض', card: 'آليات Normet لرشّ الخرسانة ونقلها وشحن المتفجّرات وإزالة الصخور المفكّكة والرفع والنقل.', title: 'معدّات التعدين والأنفاق تحت الأرض', image: assets.img.normetEquipment, list: true,
-          para: 'آليات Normet مصمّمة خصيصًا لكل مرحلة من مراحل العمل تحت الأرض، متوفّرة بمحرّكات ديزل أو بمنظومة الدفع الكهربائية بالبطاريات Normet SmartDrive.',
+          id: 'normet-equipment', n: '01', short: 'المعدّات تحت الأرض', card: 'آليات Normet لرشّ الخرسانة ونقلها وشحن المتفجّرات وإزالة الصخور المفكّكة والرفع والنقل.', title: 'معدّات التعدين والأنفاق تحت الأرض', image: assets.img.normetEquipment,
+          para: 'آليات Normet مصمّمة لكل مرحلة من مراحل العمل تحت الأرض.',
           subLabel: 'مجموعة المعدّات',
-          sub: [
-            'رشّ الخرسانة — آليات الرشّ Spraymec',
-            'نقل الخرسانة — خلّاطات النقل Utimec',
-            'شحن المتفجّرات — آليات Charmec للمستحلبات وANFO',
-            'إزالة الصخور المفكّكة — آليات Scamec',
-            'الرفع والتركيب — منصّات Himec وUtilift المقصّية والسلّية',
-            'النقل والإمداد تحت الأرض — ناقلات Variomec وMultimec للأفراد والمواد والخدمات',
-          ],
-          note: 'تُحدَّد الموديلات والتجهيزات بحسب تطبيقك عند الطلب.',
+          sub: ['رشّ الخرسانة', 'نقل الخرسانة', 'شحن المتفجّرات', 'إزالة الصخور المفكّكة', 'الرفع والتركيب', 'النقل والإمداد'],
         },
         {
           id: 'normet-rock-breaking', n: '02', short: 'المطارق الهيدروليكية وتكسير الصخور', card: 'المطارق الهيدروليكية Normet Xrock وأنظمة أذرع التكسير والأذرع الثابتة وحلول الأتمتة.', title: 'المطارق الهيدروليكية وحلول تكسير الصخور', image: assets.img.normetXrock,

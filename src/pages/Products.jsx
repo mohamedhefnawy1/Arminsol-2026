@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import Arrow from '../components/Arrow'
+import PartnerCards from '../components/PartnerCards'
 import GlassCTA from '../components/GlassCTA'
-import CheckBadge from '../components/CheckBadge'
 import CategorySection from '../components/CategorySection'
 import { useI18n } from '../i18n'
 
@@ -35,20 +35,7 @@ export default function Products() {
       <section className="section">
         <div className="container">
           <Reveal><span className="eyebrow" style={{ marginBottom: 26 }}>{p.distributorsLabel}</span></Reveal>
-          <div className="partner-grid">
-            {p.distributors.map((d, i) => (
-              <Reveal key={d.name} delay={0.05 + i * 0.06}>
-                <div className="partner-card partner-card--lg">
-                  <div className="partner-card__head">
-                    <img className="partner-card__logo" src={d.logo} alt={d.name} loading="lazy" />
-                    <span className="partner-card__badge"><CheckBadge /> {d.status}</span>
-                  </div>
-                  <p className="body" style={{ maxWidth: 'none', marginTop: 18 }}>{d.desc}</p>
-                  {d.to && <Link to={d.to} className="ocard__more partner-card__more">{c.ui.learnMore} <Arrow size={16} /></Link>}
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <PartnerCards items={p.distributors} large />
         </div>
       </section>
 

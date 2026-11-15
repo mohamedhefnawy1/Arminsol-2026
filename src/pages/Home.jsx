@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import Arrow from '../components/Arrow'
+import PartnerCards from '../components/PartnerCards'
 import GlassCTA from '../components/GlassCTA'
-import CheckBadge from '../components/CheckBadge'
 import { useI18n } from '../i18n'
 
 function SpeakerOff() {
@@ -95,20 +95,8 @@ export default function Home() {
       {/* ---- Official Distributor trust strip ---- */}
       <section className="section">
         <div className="container">
-          <Reveal><span className="eyebrow" style={{ marginBottom: 22 }}>{h.distributorLabel}</span></Reveal>
-          <Reveal delay={0.05}>
-            <div className="diststrip">
-              {h.distributors.map((d) => (
-                <div className="diststrip__item" key={d.name}>
-                  <img className="diststrip__logo" src={d.logo} alt={d.name} loading="lazy" />
-                  <div>
-                    <span className="diststrip__badge"><CheckBadge size={16} /> {d.badge || c.ui.officialDistributor}</span>
-                    <div className="diststrip__status">{d.status}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
+          <Reveal><span className="eyebrow" style={{ marginBottom: 26 }}>{h.distributorLabel}</span></Reveal>
+          <PartnerCards items={c.products.distributors} large />
         </div>
       </section>
 
