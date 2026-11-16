@@ -40,6 +40,7 @@ const assets = {
   normetLogo: '/logos/normet.svg',
   aramineUrl: 'https://aramine.com/',
   technidrillUrl: 'https://technidrill.com/',
+  normetUrl: 'https://www.normet.com/en',
   // mineral spectrum from the logo — gold, silver, copper, bauxite, phosphates, lime
   logoSwatch: ['var(--c-gold)', 'var(--c-silver)', 'var(--c-copper)', 'var(--c-bauxite)', 'var(--c-phosphates)', 'var(--c-lime)'],
 }
@@ -196,6 +197,7 @@ const S = {
     },
     normet: {
       name: 'Normet', logo: assets.normetLogo, heroImage: assets.img.normetFleet, ctaImage: assets.img.normetFleet,
+      website: assets.normetUrl, websiteLabel: 'Official Website',
       status: 'Official Agent & Distributor in Saudi Arabia',
       title: 'Normet Equipment & Solutions in Saudi Arabia',
       intro: 'Under our Agency and Distributor Agreements, Arminsol supplies Normet’s full range of products and services in the Kingdom — machinery, hydraulic breakers and rock-breaking solutions, Aliva equipment, spare parts and related solutions.',
@@ -555,6 +557,7 @@ const S = {
     },
     normet: {
       name: 'Normet', logo: assets.normetLogo, heroImage: assets.img.normetFleet, ctaImage: assets.img.normetFleet,
+      website: assets.normetUrl, websiteLabel: 'الموقع الرسمي',
       status: 'الوكيل والموزع الرسمي في المملكة العربية السعودية',
       title: 'معدّات وحلول Normet في المملكة العربية السعودية',
       intro: 'بموجب اتفاقيتَي الوكالة والتوزيع، توفّر أرمينسول المجموعة الكاملة من منتجات وخدمات Normet في المملكة — الآليات، والمطارق الهيدروليكية وحلول تكسير الصخور، ومعدّات Aliva، وقطع الغيار والحلول المرتبطة بها.',
