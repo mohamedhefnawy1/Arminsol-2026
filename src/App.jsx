@@ -8,7 +8,7 @@ import GridLines from './components/GridLines'
 import Meta from './components/Meta'
 import Home from './pages/Home'
 import Products from './pages/Products'
-import Normet from './pages/Normet'
+import PartnerPage from './pages/PartnerPage'
 import About from './pages/About'
 import Services from './pages/Services'
 import Contact from './pages/Contact'
@@ -63,7 +63,9 @@ export default function App() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Page><Home /></Page>} />
           <Route path="/products" element={<Page><Products /></Page>} />
-          <Route path="/products/normet" element={<Page><Normet /></Page>} />
+          <Route path="/products/normet" element={<Page><PartnerPage id="normet" /></Page>} />
+          <Route path="/products/aramine" element={<Page><PartnerPage id="aramine" /></Page>} />
+          <Route path="/products/technidrill" element={<Page><PartnerPage id="technidrill" /></Page>} />
           <Route path="/about" element={<Page><About /></Page>} />
           <Route path="/services" element={<Page><Services /></Page>} />
           <Route path="/contact" element={<Page><Contact /></Page>} />

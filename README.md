@@ -4,7 +4,7 @@ A React + Vite recreation of the Framer site at
 `https://methodical-consistency-401478.framer.app/` (the "Nitro" portfolio
 template, customized for **Arab Mining Solutions Trading EST.**).
 
-Pages with client-side routing: **Home, Products & Solutions (plus the Normet partner page at `/products/normet`), Services, About, Contact**.
+Pages with client-side routing: **Home, Products (plus partner pages at `/products/normet`, `/products/aramine` and `/products/technidrill`), Services, About, Contact**.
 
 ## Run it
 

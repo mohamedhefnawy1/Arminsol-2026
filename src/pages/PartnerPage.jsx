@@ -6,9 +6,11 @@ import CheckBadge from '../components/CheckBadge'
 import CategorySection from '../components/CategorySection'
 import { useI18n } from '../i18n'
 
-export default function Normet() {
+/** Dedicated page for an official partner (Normet, Aramine, Technidrill).
+ *  `id` is the partner's key in the i18n content. */
+export default function PartnerPage({ id }) {
   const { c } = useI18n()
-  const n = c.normet
+  const n = c[id]
   return (
     <>
       {/* Hero */}
@@ -16,7 +18,7 @@ export default function Normet() {
         <div className="container">
           <Reveal>
             <div className="partner-card__head" style={{ marginBottom: 34 }}>
-              <img className="partner-card__logo" src={c.normetLogo} alt="Normet" />
+              <img className="partner-card__logo" src={n.logo} alt={n.name} />
               <span className="partner-card__badge"><CheckBadge /> {n.status}</span>
             </div>
           </Reveal>
@@ -26,12 +28,13 @@ export default function Normet() {
             <div className="hero-cta">
               <Link to="/contact?inquiry=rfq" className="btn btn--gold">{c.ui.requestQuote} <Arrow /></Link>
               <Link to="/products" className="btn">{n.allProducts} <Arrow /></Link>
+              {n.website && <a href={n.website} target="_blank" rel="noopener noreferrer" className="btn">{n.websiteLabel} <Arrow /></a>}
             </div>
           </Reveal>
           <Reveal delay={0.16}>
             <div style={{ marginTop: 56 }}>
               <img
-                src={c.img.normetFleet}
+                src={n.heroImage}
                 alt={n.heroAlt}
                 style={{ width: '100%', aspectRatio: '21 / 9', objectFit: 'cover', display: 'block', borderRadius: '8px 8px 0 0', background: 'var(--card)' }}
               />
@@ -88,7 +91,7 @@ export default function Normet() {
       </section>
 
       {/* RFQ CTA */}
-      <GlassCTA image={c.img.normetFleet} title={n.ctaTitle} copy={n.ctaCopy}>
+      <GlassCTA image={n.ctaImage} title={n.ctaTitle} copy={n.ctaCopy}>
         <Link to="/contact?inquiry=rfq" className="btn btn--gold">{c.ui.sendRfqShort} <Arrow /></Link>
       </GlassCTA>
     </>
